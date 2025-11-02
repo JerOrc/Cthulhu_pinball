@@ -2,7 +2,7 @@
 
 mode:
   start_events: kickback_activated
-  stop_events: kickback_stop
+  stop_events: kickback_stop, game_ended, ball_ended, game_ending, ball_ending
   priority: 1100
   restart_on_next_ball: false
 

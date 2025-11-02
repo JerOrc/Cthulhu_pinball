@@ -1,7 +1,7 @@
 #config_version=6
 mode:
   start_events: sanity_start
-  stop_events: sanity_stop, ball_ending
+  stop_events: sanity_stop, game_ended, ball_ended, game_ending, ball_ending
   priority: 1800
   restart_on_next_ball: false
 
@@ -720,10 +720,21 @@ variable_player:
 ###########################
 
 sound_player:
+
+  mode_sanity_started:
+    sanity_indication_voice_pool:
+      action: play
+      volume: 2
+    sanity_music:
+      action: play
+      loops: -1
+      track: music
+      mode_end_action: stop
+      fade_out: 1s
+
   timer_sanity_voice_timer_complete:
     sanity_voice:
       action: play
-      loops: 0
       volume: 1
       mode_end_action: stop
       fade_out: 1s
@@ -935,6 +946,16 @@ sound_pools:
       - sanity_voice_35
       - sanity_voice_36
       - sanity_voice_37
+
+  sanity_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - sanity_debut_voice_1
+      - sanity_debut_voice_2
+      - sanity_debut_voice_3
+
 
 ###########################
 

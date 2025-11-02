@@ -1,7 +1,7 @@
 #config_version=6
 mode:
   start_events: cult_win_start
-  stop_events: timer_quit_cult_win_time_complete
+  stop_events: timer_quit_cult_win_time_complete, game_ended, ball_ended, game_ending, ball_ending
   restart_on_next_ball: false
   priority: 300
 
@@ -118,15 +118,29 @@ sound_player:
   mode_cult_win_started:
     evil_laugh_pool:
       action: play
-      loops: 0
       volume: 2
-
     super_jackpot_voice_pool:
       action: play
-      loops: 0
       volume: 2
-
+      events_when_stopped: launch_win_cult_voice
     dark_win_sound_pool:
       action: play
-      loops: 0
       volume: 1
+
+  launch_win_cult_voice:
+    cult_win_voice_pool:
+      action: play
+      volume: 2
+
+###########################
+
+sound_pools:
+  cult_win_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - cult_fin_voice_1
+      - cult_fin_voice_2
+      - cult_fin_voice_3
+      - cult_fin_voice_4

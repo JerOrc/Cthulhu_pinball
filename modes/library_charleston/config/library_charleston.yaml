@@ -2,7 +2,7 @@
 
 mode:
   start_events: library_charleston_start
-  stop_events: library_charleston_stop, timer_exit_library_charleston_time_complete
+  stop_events: library_charleston_stop, timer_exit_library_charleston_time_complete, game_ended, ball_ended, game_ending, ball_ending
   priority: 700
   restart_on_next_ball: false
 
@@ -51,14 +51,90 @@ widget_player:
       action: add
       slide: library_charleston_slide
 
+
 ###########################
+
+show_player:
+  mode_library_charleston_started:
+    library_side_flash_show:
+      speed: 100
+      loops: -1
+
+  library_charleston_target_group_complete:
+    library_target_group_complete_show:
+      speed: 5
+      loops: 10
+      priority: 1000
+
+
+###########################
+
+shots:
+  library_charleston_target_library_1_shot:
+    switch: s_target_library_1
+    show_tokens:
+      light: insert_80
+  library_charleston_target_library_2_shot:
+    switch: s_target_library_2
+    show_tokens:
+      light: insert_79
+  library_charleston_target_library_3_shot:
+    switch: s_target_library_3
+    show_tokens:
+      light: insert_78
+  library_charleston_target_library_4_shot:
+    switch: s_target_library_4
+    show_tokens:
+      light: insert_77
+  library_charleston_target_library_5_shot:
+    switch: s_target_library_5
+    show_tokens:
+      light: insert_76
+  library_charleston_target_library_6_shot:
+    switch: s_target_library_6
+    show_tokens:
+      light: insert_75
+
+###########################
+
+shot_groups:
+  library_charleston_target_group:
+    shots: library_charleston_target_library_1_shot, library_charleston_target_library_2_shot, library_charleston_target_library_3_shot, library_charleston_target_library_4_shot, library_charleston_target_library_5_shot, library_charleston_target_library_6_shot
+    reset_events: library_charleston_target_group_complete
+
+###########################
+
 
 variable_player:
   timer_exit_library_charleston_time_tick:
     exit_library_charleston_time_variable_times:
       int: device.timers.exit_library_charleston_time.ticks
       action: set
- 
+
+  library_charleston_target_library_1_shot_hit:
+    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    bonus_targets: 1
+  library_charleston_target_library_2_shot_hit:
+    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    bonus_targets: 1
+  library_charleston_target_library_3_shot_hit:
+    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    bonus_targets: 1
+  library_charleston_target_library_4_shot_hit:
+    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    bonus_targets: 1
+  library_charleston_target_library_5_shot_hit:
+    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    bonus_targets: 1
+  library_charleston_target_library_6_shot_hit:
+    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    bonus_targets: 1
+
+  library_charleston_target_group_complete:
+    score: 10000  * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    bonus_targets: 1
+    library_boost_multiplier: 1
+
 ###########################
 
 timers:
@@ -80,14 +156,6 @@ timers:
       - action: start
         event: mode_library_charleston_started
 
-
-###########################
-
-show_player:
-  mode_library_charleston_started:
-    library_side_flash_show:
-      speed: 100
-      loops: -1
 
 ###########################
 
@@ -125,3 +193,7 @@ sound_player:
       action: play
       volume: 2
 
+  library_charleston_target_group_complete:
+    complete_library_sound:
+      action: play
+      volume: 0.5

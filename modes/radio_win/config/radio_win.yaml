@@ -1,7 +1,7 @@
 #config_version=6
 mode:
   start_events: radio_win_start
-  stop_events: timer_quit_radio_win_time_complete
+  stop_events: timer_quit_radio_win_time_complete, game_ended, ball_ended, game_ending, ball_ending
   restart_on_next_ball: false
   priority: 300
 
@@ -121,13 +121,28 @@ sound_player:
   mode_radio_win_started:
     applause_win_sound_pool:
       action: play
-      loops: 0
       volume: 1
     violin_sound_victory_pool:
       action: play
-      loops: 0
       volume: 1
     super_jackpot_voice_pool:
       action: play
-      loops: 0
       volume: 2
+      events_when_stopped: launch_radio_win_voice_pool
+
+  launch_radio_win_voice_pool:
+    radio_win_voice_pool:
+      action: play
+      volume: 2
+
+###########################
+
+sound_pools:
+  radio_win_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - radio_fin_voice_1
+      - radio_fin_voice_2
+      - radio_fin_voice_3

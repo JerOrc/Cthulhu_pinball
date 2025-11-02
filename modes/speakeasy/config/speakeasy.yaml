@@ -1,14 +1,14 @@
 #config_version=6
 mode:
   start_events: speakeasy_start
-  stop_events: speakeasy_stop, ball_ended
+  stop_events: speakeasy_stop, game_ended, ball_ended, game_ending, ball_ending
   priority: 600
   restart_on_next_ball: false
 
 ###########################
 
 event_player:
-  mode_speakeasy_started: twenties_stop, hold_stop, launch_random_speakeasy_video
+  mode_speakeasy_started: twenties_stop, hold_stop, launch_random_speakeasy_video, launch_speakeasy_music|1s
   speakeasy_gate_library_shot_hit: library_speakeasy_start
   speakeasy_count_complete: speakeasy_stop, speakeasy_win_start
   speakeasy_scoop_haut_shot_hit: start_mystery_twenties_mode
@@ -21,10 +21,9 @@ event_player:
   action_valid_speakeasy_shot_2: s_popbumper_two_active
   action_valid_speakeasy_shot_3: s_popbumper_three_active
   multiball_multiball_twenties_multiball_ended: relaunch_speakeasy_music
-
-  mode_speakeasy_started{current_player.lock_rlyeh_speakeasy_available=='yes'}: open_rlyeh_lock
   multiball_rlyeh_has_stopped: relaunch_speakeasy_music
 
+  mode_speakeasy_started{current_player.lock_rlyeh_speakeasy_available=='yes'}: open_rlyeh_lock
 
 
 ###########################
@@ -820,8 +819,8 @@ variable_player:
     score: 500 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
     speakeasy_champion: 500 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
   speakeasy_gate_secret_library_shot_hit:
-    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
-    speakeasy_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
+    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier * current_player.library_boost_multiplier
+    speakeasy_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier * current_player.library_boost_multiplier
 
   sanity_group_complete:
     score: 5000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
@@ -849,9 +848,10 @@ light_player:
 
 sound_player:
   mode_speakeasy_started:
-    bumpers_voice_pool:
+    speakeasy_indication_voice_pool:
       action: play
-      volume: 2  
+      volume: 2
+  launch_speakeasy_music:
     speakeasy_music:
       action: play
       loops: -1
@@ -861,7 +861,6 @@ sound_player:
   multiball_rlyeh_has_started:
     speakeasy_music:
       action: stop
-
 
   relaunch_speakeasy_music:
     speakeasy_music:
@@ -1046,7 +1045,6 @@ sound_pools:
       - people_drink_5
       - people_drink_6
 
-
   speakeasy_voice_pool:
     load: on_demand
     type: random
@@ -1057,6 +1055,17 @@ sound_pools:
       - speakeasy_voice_3
       - speakeasy_voice_4
       - speakeasy_voice_5
+
+  speakeasy_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - speakeasy_debut_voice_1
+      - speakeasy_debut_voice_2
+      - speakeasy_debut_voice_3
+      - speakeasy_debut_voice_4
+
 
 ###########################
 

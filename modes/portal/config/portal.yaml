@@ -1,7 +1,7 @@
 #config_version=6
 mode:
   start_events: portal_start
-  stop_events: portal_stop, ball_ended
+  stop_events: portal_stop, game_ended, ball_ended, game_ending, ball_ending
   priority: 950
   restart_on_next_ball: false
 

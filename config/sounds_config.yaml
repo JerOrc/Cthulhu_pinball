@@ -681,6 +681,14 @@ sounds:
   sanity_voice_37:
     file: too-tight_3.wav
 
+  sanity_debut_voice_1:
+    file: emilie_sanity_debut_01.wav
+  sanity_debut_voice_2:
+    file: emilie_sanity_debut_02.wav
+  sanity_debut_voice_3:
+    file: emilie_sanity_debut_03.wav
+
+
 ###########################
 # Carousel
 
@@ -728,6 +736,96 @@ sounds:
     file: charleston_emilie.wav
   carousel_voice_speakeasy:
     file: speakeasy_emilie.wav
+
+  carousel_voice_cult_temple_1:
+    file: cult_temple_migou_01.wav
+  carousel_voice_cult_temple_2:
+    file: cult_temple_migou_02.wav
+  carousel_voice_cult_temple_3:
+    file: cult_temple_migou_03.wav
+  carousel_voice_cult_temple_4:
+    file: cult_temple_migou_04.wav
+  carousel_voice_cult_temple_5:
+    file: cult_temple_migou_05.wav
+
+  carousel_voice_sunken_city_1:
+    file: sunken_city_migou_01.wav
+  carousel_voice_sunken_city_2:
+    file: sunken_city_migou_02.wav
+  carousel_voice_sunken_city_3:
+    file: sunken_city_migou_03.wav
+  carousel_voice_sunken_city_4:
+    file: sunken_city_migou_04.wav
+
+  carousel_voice_graveyard_1:
+    file: graveyard_migou_01.wav
+  carousel_voice_graveyard_2:
+    file: graveyard_migou_02.wav
+  carousel_voice_graveyard_3:
+    file: graveyard_migou_03.wav
+  carousel_voice_graveyard_4:
+    file: graveyard_migou_04.wav
+  carousel_voice_graveyard_5:
+    file: graveyard_migou_05.wav
+  carousel_voice_graveyard_6:
+    file: graveyard_migou_06.wav
+  carousel_voice_graveyard_7:
+    file: graveyard_migou_07.wav
+
+  carousel_voice_aza_1:
+    file: aza_migou_01.wav
+  carousel_voice_aza_2:
+    file: aza_migou_02.wav
+  carousel_voice_aza_3:
+    file: aza_migou_03.wav
+  carousel_voice_aza_4:
+    file: aza_migou_04.wav
+
+  carousel_voice_king_1:
+    file: king_migou_01.wav
+  carousel_voice_king_2:
+    file: king_migou_02.wav
+  carousel_voice_king_3:
+    file: king_migou_03.wav
+  carousel_voice_king_4:
+    file: king_migou_04.wav
+  carousel_voice_king_5:
+    file: king_migou_05.wav
+
+  carousel_voice_nyarla_1:
+    file: nyarla_migou_01.wav
+  carousel_voice_nyarla_2:
+    file: nyarla_migou_02.wav
+  carousel_voice_nyarla_3:
+    file: nyarla_migou_03.wav
+  carousel_voice_nyarla_4:
+    file: nyarla_migou_04.wav
+
+  carousel_voice_cthulhu_1:
+    file: cthulhu_migou_01.wav
+  carousel_voice_cthulhu_2:
+    file: cthulhu_migou_02.wav
+  carousel_voice_cthulhu_3:
+    file: cthulhu_migou_03.wav
+  carousel_voice_cthulhu_4:
+    file: cthulhu_migou_04.wav
+  carousel_voice_cthulhu_5:
+    file: cthulhu_migou_05.wav
+  carousel_voice_cthulhu_6:
+    file: cthulhu_migou_06.wav
+  carousel_voice_cthulhu_7:
+    file: cthulhu_migou_07.wav
+
+  carousel_voice_shub_1:
+    file: shub_migou_01.wav
+  carousel_voice_shub_2:
+    file: shub_migou_02.wav
+  carousel_voice_shub_3:
+    file: shub_migou_03.wav
+  carousel_voice_shub_4:
+    file: shub_migou_04.wav
+  carousel_voice_shub_5:
+    file: shub_migou_05.wav
 
 ###########################
 # Tilt
@@ -790,6 +888,20 @@ sounds:
     file: dance_hours_1.wav
   charleston_voice_11:
     file: dance_hours_2.wav 
+
+  charleston_debut_voice_1:
+    file: emilie_charleston_debut_01.wav
+  charleston_debut_voice_2:
+    file: emilie_charleston_debut_02.wav
+  charleston_debut_voice_3:
+    file: emilie_charleston_debut_03.wav
+  charleston_fin_voice_1:
+    file: emilie_charleston_fin_01.wav
+  charleston_fin_voice_2:
+    file: emilie_charleston_fin_02.wav
+  charleston_fin_voice_3:
+    file: emilie_charleston_fin_03.wav
+
 
   charleston_music_1:
     file: Charleston_you_said_it.ogg
@@ -986,6 +1098,19 @@ sounds:
 ###########################
 # Dimensional portal
 
+  dimensional_portal_ready_twenties_voice_1:
+    file: emilie_portal_ready_twenties_01.wav
+  dimensional_portal_ready_twenties_voice_2:
+    file: emilie_portal_ready_twenties_02.wav
+  dimensional_portal_ready_monster_voice_1:
+    file: emilie_portal_ready_go_bumpers_01.wav
+  dimensional_portal_ready_monster_voice_2:
+    file: emilie_portal_ready_go_bumpers_02.wav
+  dimensional_portal_ready_monster_voice_3:
+    file: emilie_portal_ready_go_bumpers_03.wav
+  dimensional_portal_ready_monster_voice_4:
+    file: emilie_portal_ready_go_bumpers_04.wav
+
   dimensional_portal_1:
     file: safe_1.wav
   dimensional_portal_2:
@@ -1159,6 +1284,21 @@ sounds:
 
   radio_static_1:
     file: radio-static.wav
+
+  radio_debut_voice_1:
+    file: emilie_radio_debut_01.wav
+  radio_debut_voice_2:
+    file: emilie_radio_debut_02.wav
+  radio_debut_voice_3:
+    file: emilie_radio_debut_03.wav
+  radio_debut_voice_4:
+    file: emilie_radio_debut_04.wav
+  radio_fin_voice_1:
+    file: emilie_radio_fin_01.wav
+  radio_fin_voice_2:
+    file: emilie_radio_fin_02.wav
+  radio_fin_voice_3:
+    file: emilie_radio_fin_03.wav
 
   space_radio_1:
     file: space_radio_1.wav
@@ -1383,6 +1523,25 @@ sounds:
   pub_ambiance_1:
     file: pub-ambiance.ogg
 
+  speakeasy_debut_voice_1:
+    file: emilie_speakeasy_debut_01.wav
+  speakeasy_debut_voice_2:
+    file: emilie_speakeasy_debut_02.wav
+  speakeasy_debut_voice_3:
+    file: emilie_speakeasy_debut_03.wav
+  speakeasy_debut_voice_4:
+    file: emilie_speakeasy_debut_04.wav
+  speakeasy_fin_voice_1:
+    file: emilie_speakeasy_fin_01.wav
+  speakeasy_fin_voice_2:
+    file: emilie_speakeasy_fin_02.wav
+  speakeasy_fin_voice_3:
+    file: emilie_speakeasy_fin_03.wav
+  speakeasy_fin_voice_4:
+    file: emilie_speakeasy_fin_04.wav
+  speakeasy_fin_voice_5:
+    file: emilie_speakeasy_fin_05.wav
+
   clink_glasses_1:
     file: clink_glasses_1.wav
   clink_glasses_2:
@@ -1462,6 +1621,19 @@ sounds:
     file: graveyard_music_1.ogg
   graveyard_music_2:
     file: graveyard_music_2.ogg
+
+  graveyard_debut_voice_1:
+    file: emilie_graveyard_debut_01.wav
+  graveyard_debut_voice_2:
+    file: emilie_graveyard_debut_02.wav
+  graveyard_debut_voice_3:
+    file: emilie_graveyard_debut_03.wav
+  graveyard_fin_voice_1:
+    file: emilie_graveyard_fin_01.wav
+  graveyard_fin_voice_2:
+    file: emilie_graveyard_fin_02.wav
+  graveyard_fin_voice_3:
+    file: emilie_graveyard_fin_03.wav
 
   ghoul_1:
     file: ghoul_1.wav
@@ -1600,9 +1772,9 @@ sounds:
 # Cult temple
 
   cult_music_1:
-    file: cult_action_music.ogg
+    file: cult_action_music_loud.ogg
   cult_music_2:
-    file: cult_action_music_2.ogg
+    file: cult_action_music_2_loud.ogg
 
   cult_voice_1:
     file: cult_voice_1.wav
@@ -1618,6 +1790,22 @@ sounds:
     file: something.wav
   cult_voice_7:
     file: mask.wav
+
+  cult_debut_voice_1:
+    file: emilie_cult_debut_01.wav
+  cult_debut_voice_2:
+    file: emilie_cult_debut_02.wav
+  cult_debut_voice_3:
+    file: emilie_cult_debut_03.wav
+  cult_fin_voice_1:
+    file: emilie_cult_fin_01.wav
+  cult_fin_voice_2:
+    file: emilie_cult_fin_02.wav
+  cult_fin_voice_3:
+    file: emilie_cult_fin_03.wav
+  cult_fin_voice_4:
+    file: emilie_cult_fin_04.wav
+
 
   cult_sfx_1:
     file: running_1.wav
@@ -1649,6 +1837,27 @@ sounds:
     file: city_music_2.ogg
   city_music_3:
     file: city_music_3.ogg
+
+  city_debut_voice_1:
+    file: emilie_city_debut_01.wav
+  city_debut_voice_2:
+    file: emilie_city_debut_02.wav
+  city_fin_voice_1:
+    file: emilie_city_fin_01.wav
+  city_fin_voice_2:
+    file: emilie_city_fin_02.wav
+  city_fin_voice_3:
+    file: emilie_city_fin_03.wav
+  city_fin_voice_4:
+    file: emilie_city_fin_04.wav
+  city_niveau_1_voice_1:
+    file: emilie_city_niveau_1_ok_01.wav
+  city_niveau_2_voice_1:
+    file: emilie_city_niveau_2_ok_01.wav
+  city_niveau_3_voice_1:
+    file: emilie_city_niveau_3_ok_01.wav
+  city_niveau_4_voice_1:
+    file: emilie_city_niveau_4_debut_01.wav
 
   city_sfx_1:
     file: city_sfx_1.wav
@@ -1794,10 +2003,9 @@ sounds:
 # Pursuit twenties
 
   pursuit_music_1:
-    file: pursuit_music_1.ogg
-  pursuit_music_2:
-    file: pursuit_music_2.ogg
-
+    file: pursuit_music_1.wav
+  # pursuit_music_2:
+  #   file: pursuit_music_2.wav
 
   pursuit_voice_1:
     file: intoourtrap-01.wav
@@ -1831,6 +2039,15 @@ sounds:
     file: fight_now-05.wav
   pursuit_voice_16:
     file: fight_now-06.wav
+
+  pursuit_debut_voice_1:
+    file: emilie_pursuit_debut_01.wav
+  pursuit_debut_voice_2:
+    file: emilie_pursuit_debut_02.wav
+  pursuit_debut_voice_3:
+    file: emilie_pursuit_debut_03.wav
+  pursuit_debut_voice_4:
+    file: emilie_pursuit_debut_04.wav
 
 ###########################
 # Action button
@@ -1920,7 +2137,7 @@ sounds:
     file: lionel_lock_lit_5.wav
 
   multiball_rlyeh_music_1:
-    file: Darkest_Dungeon_Return_Warrens.ogg
+    file: darkest_dungeon_return_warrens.wav
 
   multiball_rlyeh_ready_sound_1:
     file: brain_damage_01.wav
@@ -2006,6 +2223,70 @@ sounds:
   nyarla_sfx_new_step:
     file: epic-hit-aggressive-logo-142801.wav
 
+  nyarla_voice_strange_encounter_1:
+    file: strange_encounter_migou_01.wav
+  nyarla_voice_strange_encounter_2:
+    file: strange_encounter_migou_02.wav
+  nyarla_voice_strange_encounter_3:
+    file: strange_encounter_migou_03.wav
+  nyarla_voice_strange_encounter_4:
+    file: strange_encounter_migou_04.wav
+
+  nyarla_voice_witch_house_1:
+    file: witch_house_migou_01.wav
+  nyarla_voice_witch_house_2:
+    file: witch_house_migou_02.wav
+  nyarla_voice_witch_house_3:
+    file: witch_house_migou_03.wav
+  nyarla_voice_witch_house_4:
+    file: witch_house_migou_04.wav
+
+  nyarla_voice_thousands_forms_1:
+    file: thousands_forms_migou_01.wav
+  nyarla_voice_thousands_forms_2:
+    file: thousands_forms_migou_02.wav
+  nyarla_voice_thousands_forms_3:
+    file: thousands_forms_migou_03.wav
+  nyarla_voice_thousands_forms_4:
+    file: thousands_forms_migou_04.wav
+
+  nyarla_end_voice_1:
+    file: emilie_nyarla_end_01.wav
+  nyarla_end_voice_2:
+    file: emilie_nyarla_end_02.wav
+  nyarla_end_voice_3:
+    file: emilie_nyarla_end_03.wav
+  nyarla_phase_1_voice_1:
+    file: emilie_nyarla_phase_1_01.wav
+  nyarla_phase_1_voice_2:
+    file: emilie_nyarla_phase_1_02.wav
+  nyarla_phase_1_voice_3:
+    file: emilie_nyarla_phase_1_03.wav
+  nyarla_phase_2_voice_1:
+    file: emilie_nyarla_phase_2_01.wav
+  nyarla_phase_2_voice_2:
+    file: emilie_nyarla_phase_2_02.wav
+  nyarla_phase_2_voice_3:
+    file: emilie_nyarla_phase_2_03.wav
+  nyarla_phase_3_voice_1:
+    file: emilie_nyarla_phase_3_01.wav
+  nyarla_phase_3_voice_2:
+    file: emilie_nyarla_phase_3_02.wav
+  nyarla_phase_3_voice_3:
+    file: emilie_nyarla_phase_3_03.wav
+  nyarla_phase_4_voice_1:
+    file: emilie_nyarla_phase_4_01.wav
+  nyarla_phase_4_voice_2:
+    file: emilie_nyarla_phase_4_02.wav
+  nyarla_phase_4_voice_3:
+    file: emilie_nyarla_phase_4_03.wav
+  nyarla_phase_4_ramp_voice_1:
+    file: emilie_nyarla_phase_4_ramp_01.wav
+  nyarla_phase_4_ramp_voice_2:
+    file: emilie_nyarla_phase_4_ramp_02.wav
+  nyarla_phase_4_ramp_voice_3:
+    file: emilie_nyarla_phase_4_ramp_03.wav
+
   nyarla_sfx_1:
     file: nyarla_sfx_1.wav
   nyarla_sfx_2:
@@ -2059,6 +2340,22 @@ sounds:
 
   lurking_music:
     file: lurking_music.ogg
+
+  lurking_debut_voice_1:
+    file: emilie_lurking_debut_01.wav
+  lurking_debut_voice_2:
+    file: emilie_lurking_debut_02.wav
+  lurking_debut_voice_3:
+    file: emilie_lurking_debut_03.wav
+  lurking_debut_voice_4:
+    file: emilie_lurking_debut_04.wav
+  lurking_debut_voice_5:
+    file: emilie_lurking_debut_05.wav
+  lurking_debut_voice_6:
+    file: emilie_lurking_debut_06.wav
+  lurking_debut_voice_7:
+    file: emilie_lurking_debut_07.wav
+
 
   lurking_laugh:
     file: demonic-laughter.wav
@@ -2153,6 +2450,62 @@ sounds:
     file: strange3.wav
   king_voice_9:
     file: strange4.wav
+
+  king_voice_tatterdemalion_1:
+    file: tatterdemalion_migou_01.wav
+  king_voice_tatterdemalion_2:
+    file: tatterdemalion_migou_02.wav
+  king_voice_tatterdemalion_3:
+    file: tatterdemalion_migou_03.wav
+  king_voice_tatterdemalion_4:
+    file: tatterdemalion_migou_04.wav
+  king_voice_tatterdemalion_5:
+    file: tatterdemalion_migou_05.wav
+
+  king_voice_curtain_1:
+    file: curtain_migou_01.wav
+  king_voice_curtain_2:
+    file: curtain_migou_02.wav
+  king_voice_curtain_3:
+    file: curtain_migou_03.wav
+  king_voice_curtain_4:
+    file: curtain_migou_04.wav
+
+  king_voice_horror_stage_1:
+    file: horror_on_stage_migou_01.wav
+  king_voice_horror_stage_2:
+    file: horror_on_stage_migou_02.wav
+  king_voice_horror_stage_3:
+    file: horror_on_stage_migou_03.wav
+  king_voice_horror_stage_4:
+    file: horror_on_stage_migou_04.wav
+
+  king_end_voice_1:
+    file: emilie_king_end_01.wav
+  king_end_voice_2:
+    file: emilie_king_end_02.wav
+  king_end_voice_3:
+    file: emilie_king_end_03.wav
+  king_phase_1_voice_1:
+    file: emilie_king_phase_1_01.wav
+  king_phase_1_voice_2:
+    file: emilie_king_phase_1_02.wav
+  king_phase_1_voice_3:
+    file: emilie_king_phase_1_03.wav
+  king_phase_1_voice_4:
+    file: emilie_king_phase_1_04.wav
+  king_phase_1_voice_5:
+    file: emilie_king_phase_1_05.wav
+  king_phase_3_voice_1:
+    file: emilie_king_phase_3_01.wav
+  king_phase_3_voice_2:
+    file: emilie_king_phase_3_02.wav
+  king_phase_4_voice_1:
+    file: emilie_king_phase_4_01.wav
+  king_phase_4_voice_2:
+    file: emilie_king_phase_4_02.wav
+  king_phase_4_voice_3:
+    file: emilie_king_phase_4_03.wav
 
   king_sfx_1:
     file: audience_laugh_1.wav
@@ -2268,7 +2621,7 @@ sounds:
 # Ford-t ride
 
   fordt_ride_music_1:
-    file: Harry_Archer_Sunny_1925.ogg
+    file: harry_archer_sunny_1925.wav
 
   fordt_ride_motor_1:
     file: fordt_ride_motor_1.wav
@@ -2512,6 +2865,72 @@ sounds:
   shub_voice_13:
     file: dont_be stumped_3.wav
 
+  shub_voice_woods_1:
+    file: lost_woods_migou_01.wav
+  shub_voice_woods_2:
+    file: lost_woods_migou_02.wav
+  shub_voice_woods_3:
+    file: lost_woods_migou_03.wav
+  shub_voice_woods_4:
+    file: lost_woods_migou_04.wav
+
+  shub_voice_gathering_1:
+    file: strange_gathering_migou_01.wav
+  shub_voice_gathering_2:
+    file: strange_gathering_migou_02.wav
+  shub_voice_gathering_3:
+    file: strange_gathering_migou_03.wav
+  shub_voice_gathering_4:
+    file: strange_gathering_migou_04.wav
+
+  shub_voice_thousand_young_1:
+    file: thousand_young_migou_01.wav
+  shub_voice_thousand_young_2:
+    file: thousand_young_migou_02.wav
+  shub_voice_thousand_young_3:
+    file: thousand_young_migou_03.wav
+  shub_voice_thousand_young_4:
+    file: thousand_young_migou_04.wav
+
+  shub_end_voice_1:
+    file: emilie_shub_end_01.wav
+  shub_end_voice_2:
+    file: emilie_shub_end_02.wav
+  shub_end_voice_3:
+    file: emilie_shub_end_03.wav
+  shub_end_voice_4:
+    file: emilie_shub_end_04.wav
+  shub_phase_1_voice_1:
+    file: emilie_shub_phase_1_01.wav
+  shub_phase_1_voice_2:
+    file: emilie_shub_phase_1_02.wav
+  shub_phase_1_voice_3:
+    file: emilie_shub_phase_1_03.wav
+  shub_phase_2_voice_1:
+    file: emilie_shub_phase_2_01.wav
+  shub_phase_2_voice_2:
+    file: emilie_shub_phase_2_02.wav
+  shub_phase_2_voice_3:
+    file: emilie_shub_phase_2_03.wav
+  shub_phase_3_voice_1:
+    file: emilie_shub_phase_3_01.wav
+  shub_phase_3_voice_2:
+    file: emilie_shub_phase_3_02.wav
+  shub_phase_3_voice_3:
+    file: emilie_shub_phase_3_03.wav
+  shub_phase_4_voice_1:
+    file: emilie_shub_phase_4_01.wav
+  shub_phase_4_voice_2:
+    file: emilie_shub_phase_4_02.wav
+  shub_phase_4_voice_3:
+    file: emilie_shub_phase_4_03.wav
+  shub_phase_4_reload_voice_1:
+    file: emilie_shub_phase_4_reload_01.wav
+  shub_phase_4_reload_voice_2:
+    file: emilie_shub_phase_4_reload_02.wav
+  shub_phase_4_reload_voice_3:
+    file: emilie_shub_phase_4_reload_03.wav
+
 
 ###########################
 # Cellar
@@ -2583,6 +3002,16 @@ sounds:
   cellar_voice_no_escape_7:
     file: rires_maniaque_2.wav
 
+  cellar_debut_multi_voice_1:
+    file: emilie_cellar_multi_debut_01.wav
+  cellar_debut_multi_voice_2:
+    file: emilie_cellar_multi_debut_02.wav
+  cellar_debut_multi_voice_3:
+    file: emilie_cellar_multi_debut_03.wav
+  cellar_debut_multi_voice_4:
+    file: emilie_cellar_multi_debut_04.wav
+  cellar_debut_multi_voice_5:
+    file: emilie_cellar_multi_debut_05.wav
 
 ###########################
 # Game_over
@@ -2614,7 +3043,63 @@ sounds:
   aza_voice_10:
     file: star_just_moved.wav
 
+  aza_voice_court_1:
+    file: the_court_migou_01.wav
+  aza_voice_court_2:
+    file: the_court_migou_02.wav
+  aza_voice_court_3:
+    file: the_court_migou_03.wav
+  aza_voice_court_4:
+    file: the_court_migou_04.wav
 
+  aza_voice_search_space_1:
+    file: search_space_migou_01.wav
+  aza_voice_search_space_2:
+    file: search_space_migou_02.wav
+  aza_voice_search_space_3:
+    file: search_space_migou_03.wav
+  aza_voice_search_space_4:
+    file: search_space_migou_04.wav
+
+  aza_voice_flutes_1:
+    file: flutes_migou_01.wav
+  aza_voice_flutes_2:
+    file: flutes_migou_02.wav
+  aza_voice_flutes_3:
+    file: flutes_migou_03.wav
+  aza_voice_flutes_4:
+    file: flutes_migou_04.wav
+
+  aza_end_voice_1:
+    file: emilie_aza_end_01.wav
+  aza_end_voice_2:
+    file: emilie_aza_end_02.wav
+  aza_end_voice_3:
+    file: emilie_aza_end_03.wav
+  aza_phase_1_voice_1:
+    file: emilie_aza_phase_1_01.wav
+  aza_phase_1_voice_2:
+    file: emilie_aza_phase_1_02.wav
+  aza_phase_1_voice_3:
+    file: emilie_aza_phase_1_03.wav
+  aza_phase_2_voice_1:
+    file: emilie_aza_phase_2_01.wav
+  aza_phase_2_voice_2:
+    file: emilie_aza_phase_2_02.wav
+  aza_phase_2_voice_3:
+    file: emilie_aza_phase_2_03.wav
+  aza_phase_3_voice_1:
+    file: emilie_aza_phase_3_01.wav
+  aza_phase_3_voice_2:
+    file: emilie_aza_phase_3_02.wav
+  aza_phase_3_voice_3:
+    file: emilie_aza_phase_3_03.wav
+  aza_phase_4_voice_1:
+    file: emilie_aza_phase_4_01.wav
+  aza_phase_4_voice_2:
+    file: emilie_aza_phase_4_02.wav
+  aza_phase_4_voice_3:
+    file: emilie_aza_phase_4_03.wav
 
   aza_sfx_1:
     file: loop_flute_1.wav
@@ -2685,6 +3170,82 @@ sounds:
     file: underwater_1.wav
   cthulhu_sfx_9:
     file: underwater_2.wav
+
+  cthulhu_voice_locate_rlyeh_1:
+    file: locate_rlyeh_migou_01.wav
+  cthulhu_voice_locate_rlyeh_2:
+    file: locate_rlyeh_migou_02.wav
+  cthulhu_voice_locate_rlyeh_3:
+    file: locate_rlyeh_migou_03.wav
+  cthulhu_voice_locate_rlyeh_4:
+    file: locate_rlyeh_migou_04.wav
+  cthulhu_voice_locate_rlyeh_5:
+    file: locate_rlyeh_migou_05.wav
+  cthulhu_voice_locate_rlyeh_6:
+    file: locate_rlyeh_migou_06.wav
+
+  cthulhu_voice_find_ship_1:
+    file: find_ship_migou_01.wav
+  cthulhu_voice_find_ship_2:
+    file: find_ship_migou_02.wav
+  cthulhu_voice_find_ship_3:
+    file: find_ship_migou_03.wav
+  cthulhu_voice_find_ship_4:
+    file: find_ship_migou_04.wav
+  cthulhu_voice_find_ship_5:
+    file: find_ship_migou_05.wav
+  cthulhu_voice_find_ship_6:
+    file: find_ship_migou_06.wav
+
+  cthulhu_voice_rlyeh_rises_1:
+    file: rlyeh_rises_migou_01.wav
+  cthulhu_voice_rlyeh_rises_2:
+    file: rlyeh_rises_migou_02.wav
+  cthulhu_voice_rlyeh_rises_3:
+    file: rlyeh_rises_migou_03.wav
+  cthulhu_voice_rlyeh_rises_4:
+    file: rlyeh_rises_migou_04.wav
+  cthulhu_voice_rlyeh_rises_5:
+    file: rlyeh_rises_migou_05.wav
+
+  cthulhu_end_voice_1:
+    file: emilie_cthulhu_end_01.wav
+  cthulhu_end_voice_2:
+    file: emilie_cthulhu_end_02.wav
+  cthulhu_end_voice_3:
+    file: emilie_cthulhu_end_03.wav
+  cthulhu_end_voice_4:
+    file: emilie_cthulhu_end_04.wav
+  cthulhu_phase_1_voice_1:
+    file: emilie_cthulhu_phase_1_01.wav
+  cthulhu_phase_1_voice_2:
+    file: emilie_cthulhu_phase_1_02.wav
+  cthulhu_phase_1_voice_3:
+    file: emilie_cthulhu_phase_1_03.wav
+  cthulhu_phase_1_voice_4:
+    file: emilie_cthulhu_phase_1_04.wav
+  cthulhu_phase_2_voice_1:
+    file: emilie_cthulhu_phase_2_01.wav
+  cthulhu_phase_2_voice_2:
+    file: emilie_cthulhu_phase_2_02.wav
+  cthulhu_phase_2_voice_3:
+    file: emilie_cthulhu_phase_2_03.wav
+  cthulhu_phase_2_voice_4:
+    file: emilie_cthulhu_phase_2_04.wav
+  cthulhu_phase_2_voice_5:
+    file: emilie_cthulhu_phase_2_05.wav
+  cthulhu_phase_3_voice_1:
+    file: emilie_cthulhu_phase_3_01.wav
+  cthulhu_phase_3_voice_2:
+    file: emilie_cthulhu_phase_3_02.wav
+  cthulhu_phase_3_voice_3:
+    file: emilie_cthulhu_phase_3_03.wav
+  cthulhu_phase_4_voice_1:
+    file: emilie_cthulhu_phase_4_01.wav
+  cthulhu_phase_4_voice_2:
+    file: emilie_cthulhu_phase_4_02.wav
+  cthulhu_phase_4_voice_3:
+    file: emilie_cthulhu_phase_4_03.wav
 
 
   cthulhu_hit_sfx_1:
@@ -2759,7 +3320,16 @@ sounds:
 # Chthonian
 
   chthonian_music_1:
-    file: Earth_Shaker_Drums_01.ogg
+    file: earth_shaker_drums_01.wav
+
+  chthonian_debut_voice_1:
+    file: emilie_chthonian_debut_01.wav
+  chthonian_debut_voice_2:
+    file: emilie_chthonian_debut_02.wav
+  chthonian_debut_voice_3:
+    file: emilie_chthonian_debut_03.wav
+  chthonian_debut_voice_4:
+    file: emilie_chthonian_debut_04.wav
 
   chthonian_sfx_air_raid_1:
     file: air-raid-siren-1.wav
@@ -2800,7 +3370,7 @@ sounds:
 # Bywandine
 
   bywandine_music_1:
-    file: dream_bywandine.ogg
+    file: dream_bywandine.wav
 
   bywandine_sfx_1:
     file: wow.wav
@@ -2824,3 +3394,10 @@ sounds:
 
   bywandine_bonus_sfx_1:
     file: weird_laughter_01.wav
+
+  bywandine_debut_voice_1:
+    file: emilie_bywandine_debut_01.wav
+  bywandine_debut_voice_2:
+    file: emilie_bywandine_debut_02.wav
+  bywandine_debut_voice_3:
+    file: emilie_bywandine_debut_03.wav

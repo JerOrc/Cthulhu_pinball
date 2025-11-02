@@ -1,8 +1,8 @@
 #config_version=6
 mode:
   start_events: graveyard_start
-  stop_events: graveyard_stop, ball_ended
-  priority: 600
+  stop_events: graveyard_stop, game_ended, ball_ended, game_ending, ball_ending
+  priority: 1600
   restart_on_next_ball: false
 
 ###########################
@@ -295,7 +295,7 @@ shot_profiles:
         show: graveyard_ghoul_blink_show
         speed: 10
         loops: -1
-        priority: 600
+        priority: 1600
 
   graveyard_target_profile:
     advance_on_hit: true
@@ -971,9 +971,8 @@ variable_player:
     score: 500 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
     graveyard_champion: 500 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
   graveyard_gate_secret_library_shot_hit:
-    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
-    graveyard_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
-
+    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier * current_player.library_boost_multiplier
+    graveyard_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier * current_player.library_boost_multiplier
 
 ###########################
 
@@ -991,7 +990,7 @@ light_player:
 
 sound_player:
   mode_graveyard_started:
-    white_targets_voice_pool:
+    graveyard_indication_voice_pool:
       action: play
       volume: 2
     graveyard_music:
@@ -1003,7 +1002,6 @@ sound_player:
   multiball_rlyeh_has_started:
     graveyard_music:
       action: stop
-
 
   relaunch_graveyard_music:
     dramatic_music_pool, suspens_music_pool:
@@ -1186,6 +1184,15 @@ sound_pools:
       - graveyard_voice_17
       - graveyard_voice_18
       - graveyard_voice_19
+
+  graveyard_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - graveyard_debut_voice_1
+      - graveyard_debut_voice_2
+      - graveyard_debut_voice_3
 
   ghoul_sfx_pool:
     load: on_demand

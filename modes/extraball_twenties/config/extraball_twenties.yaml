@@ -2,7 +2,7 @@
 mode:
   start_events: mode_base_started{current_player.variable_extraball_twenties=='undone'}
   priority: 5000
-  stop_events: mode_extraball_twenties_stop
+  stop_events: mode_extraball_twenties_stop, game_ended, ball_ended, game_ending, ball_ending
 
 ###########################
 

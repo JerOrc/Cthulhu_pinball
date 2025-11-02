@@ -30,6 +30,7 @@ modes:
   - sanity_videos
   - multiplayer_videos
   - game_over
+  - randomizer
   - random_available_mission
 
   - pre_azathoth
@@ -311,9 +312,6 @@ player_vars:
   loop_count:
     value_type: int
     initial_value: 0
-  # loops_champion:
-  #   value_type: int
-  #   initial_value: 0
 
   bonus_combo:
     value_type: int
@@ -321,49 +319,7 @@ player_vars:
   combo_count:
     value_type: int
     initial_value: 0
-  # combos_champion:
-  #   value_type: int
-  #   initial_value: 0
 
-  # radio_champion:
-  #   value_type: int
-  #   initial_value: 0
-  # charleston_champion:
-  #   value_type: int
-  #   initial_value: 0
-  # speakeasy_champion:
-  #   value_type: int
-  #   initial_value: 0
-  # cult_champion:
-  #   value_type: int
-  #   initial_value: 0
-  # graveyard_champion:
-  #   value_type: int
-  #   initial_value: 0
-  # city_champion:
-  #   value_type: int
-  #   initial_value: 0
-  # aza_champion:
-  #   value_type: int
-  #   initial_value: 0
-  # king_champion:
-  #   value_type: int
-  #   initial_value: 0
-  # nyarla_champion:
-  #   value_type: int
-  #   initial_value: 0
-  # cthulhu_champion:
-  #   value_type: int
-  #   initial_value: 0
-  # shub_champion:
-  #   value_type: int
-  #   initial_value: 0
-  # videomonster_champion:
-  #   value_type: int
-  #   initial_value: 0
-  # videofordt_champion:
-  #   value_type: int
-  #   initial_value: 0
 
   bywandine_bonus:
     value_type: int
@@ -937,7 +893,7 @@ coils:
 
   c_scoop_haut:
     number: 1-0-5
-    default_pulse_ms: 18
+    default_pulse_ms: 25
 
   c_knocker:
     number: 3-0-1 # 3-0-1
@@ -1188,12 +1144,19 @@ assets:
   sounds:
     default:
       load: on_demand
+      max_queue_time: 2
     music:
       track: music
+      simultaneous_sounds: 1
+      max_queue_time: 5
     sfx:
       track: sfx
+      simultaneous_sounds: 8
+      max_queue_time: 2
     voice:
       track: voice
+      simultaneous_sounds: 1
+      max_queue_time: 5
 
 ###########################
 

@@ -1,14 +1,14 @@
 #config_version=6
 mode:
   start_events: chthonian_attack_start
-  stop_events: chthonian_attack_stop, ball_ended
+  stop_events: chthonian_attack_stop, game_ended, ball_ended, game_ending, ball_ending
   priority: 1600
   restart_on_next_ball: false
 
 ###########################
 
 event_player:
-  mode_chthonian_attack_started: twenties_stop, hold_stop, launch_earthquake_random_video, launch_chthonian_timer
+  mode_chthonian_attack_started: twenties_stop, hold_stop, launch_earthquake_random_video, launch_chthonian_timer, launch_cthonian_ambiance, launch_cthonian_music|1s
   timer_exit_chthonian_time_complete: chthonian_attack_stop, twenties_start
   launch_earthquake: shaker_shake
   recover_balance: stop_earthquake
@@ -750,16 +750,24 @@ variable_player:
 ###########################
 
 sound_player:
-  mode_chthonian_attack_started:
-    chthonian_music_pool:
+  launch_cthonian_music:
+    chthonian_music_1:
       action: play
+      track: music
       loops: -1
       volume: 1
       mode_end_action: stop
       fade_out: 1s
+  launch_cthonian_ambiance:
     chthonian_sfx_air_raid_1:
       action: play
       volume: 3
+      events_when_stopped: launch_chthonian_indication_voice_pool
+
+  launch_chthonian_indication_voice_pool:
+    chthonian_indication_voice_pool:
+      action: play
+      volume: 2
 
   launch_earthquake:
     earthquake_sfx_pool:
@@ -1002,6 +1010,16 @@ sound_pools:
       - earthquake_sfx_2
       - earthquake_sfx_3
       - earthquake_sfx_4
+
+  chthonian_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - chthonian_debut_voice_1
+      - chthonian_debut_voice_2
+      - chthonian_debut_voice_3
+      - chthonian_debut_voice_4
 
 ###########################
 

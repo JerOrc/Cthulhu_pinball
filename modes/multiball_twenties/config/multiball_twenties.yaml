@@ -1,9 +1,9 @@
 #config_version=6
 mode:
   start_events:  mode_base_started{current_player.insert_multiball_twenties!='complete'}, multiball_twenties_start{current_player.insert_multiball_twenties!='complete'}, mode_sanity_stopped{current_player.insert_multiball_twenties!='complete'}, multiball_rlyeh_has_stopped{current_player.insert_multiball_twenties!='complete'}
-  stop_events: multiball_twenties_stop, multiball_rlyeh_has_started
+  stop_events: multiball_twenties_stop, multiball_rlyeh_has_started, game_ended, ball_ended, game_ending, ball_ending
   priority: 1500
-  restart_on_next_ball: true
+  # restart_on_next_ball: true
 
 ###########################
 
@@ -15,6 +15,7 @@ event_player:
   ball_three_locked: launch_multiball_twenties, play_multiball_twenties_sfx
   play_multiball_twenties_sfx: play_multiball_twenties_music|3s
   "{device.shots.multiball_twenties_target_square_2_shot.state_name=='litmultiball' and device.shots.multiball_twenties_target_square_3_shot.state_name=='litmultiball'}": display_lock_lit
+  mode_multiball_twenties_started{device.shots.multiball_twenties_target_square_2_shot.state_name=='litmultiball' and device.shots.multiball_twenties_target_square_3_shot.state_name=='litmultiball'}: display_lock_lit
   multiball_multiball_twenties_multiball_ended: multiball_twenties_stop|1s
 
   # multiball_multiball_rlyeh_multiball_started: block_twenties_lock
@@ -23,58 +24,114 @@ event_player:
 ###########################
 
 slide_player:
-  launch_multiball_prepare_video_1: multiball_twenties_lock_one_1_slide
-  launch_multiball_prepare_video_2: multiball_twenties_lock_one_2_slide
-  launch_multiball_prepare_video_3: multiball_twenties_lock_one_3_slide
-  launch_multiball_prepare_video_7: multiball_twenties_lock_one_7_slide
-  launch_multiball_prepare_video_8: multiball_twenties_lock_one_8_slide
-  launch_multiball_prepare_video_9: multiball_twenties_lock_one_9_slide
-  launch_multiball_prepare_video_10: multiball_twenties_lock_one_10_slide
+  launch_multiball_prepare_video_1:
+    multiball_twenties_lock_one_1_slide:
+      action: play
+      priority: 2000
+  launch_multiball_prepare_video_2:
+    multiball_twenties_lock_one_2_slide:
+      action: play
+      priority: 2000
+  launch_multiball_prepare_video_3:
+    multiball_twenties_lock_one_3_slide:
+      action: play
+      priority: 2000
+  launch_multiball_prepare_video_7:
+    multiball_twenties_lock_one_7_slide:
+      action: play
+      priority: 2000
+  launch_multiball_prepare_video_8:
+    multiball_twenties_lock_one_8_slide:
+      action: play
+      priority: 2000
+  launch_multiball_prepare_video_9:
+    multiball_twenties_lock_one_9_slide:
+      action: play
+      priority: 2000
+  launch_multiball_prepare_video_10:
+    multiball_twenties_lock_one_10_slide:
+      action: play
+      priority: 2000
 
-  launch_multiball_prepare_video_4: multiball_twenties_lock_two_1_slide
-  launch_multiball_prepare_video_5: multiball_twenties_lock_two_2_slide
-  launch_multiball_prepare_video_6: multiball_twenties_lock_two_3_slide
-  launch_multiball_prepare_video_11: multiball_twenties_lock_two_11_slide
-  launch_multiball_prepare_video_12: multiball_twenties_lock_two_12_slide
-  launch_multiball_prepare_video_13: multiball_twenties_lock_two_13_slide
+  launch_multiball_prepare_video_4:
+    multiball_twenties_lock_two_1_slide:
+      action: play
+      priority: 2000
+  launch_multiball_prepare_video_5:
+    multiball_twenties_lock_two_2_slide:
+      action: play
+      priority: 2000
+  launch_multiball_prepare_video_6:
+    multiball_twenties_lock_two_3_slide:
+      action: play
+      priority: 2000
+  launch_multiball_prepare_video_11:
+    multiball_twenties_lock_two_11_slide:
+      action: play
+      priority: 2000
+  launch_multiball_prepare_video_12:
+    multiball_twenties_lock_two_12_slide:
+      action: play
+      priority: 2000
+  launch_multiball_prepare_video_13:
+    multiball_twenties_lock_two_13_slide:
+      action: play
+      priority: 2000
 
-  launch_multiball_long_video_1: multiball_twenties_lock_three_slide_1
-  launch_multiball_long_video_2: multiball_twenties_lock_three_slide_2
+  launch_multiball_long_video_1:
+    multiball_twenties_lock_three_slide_1:
+      action: play
+      priority: 2000
+  launch_multiball_long_video_2:
+    multiball_twenties_lock_three_slide_2:
+      action: play
+      priority: 2000
 
-  display_lock_lit: multiball_twenties_lock_ready_slide
+  display_lock_lit:
+    multiball_twenties_lock_ready_slide:
+      action: play
+      priority: 2000
 
   launch_multiballextended_video_1:
     multiball_extended_slide_1:
       action: play
       expire: 9s
+      priority: 2000
   launch_multiballextended_video_2:
     multiball_extended_slide_2:
       action: play
       expire: 9s
+      priority: 2000
   launch_multiballextended_video_3:
     multiball_extended_slide_3:
       action: play
       expire: 9s
+      priority: 2000
   launch_multiballextended_video_4:
     multiball_extended_slide_4:
       action: play
       expire: 9s
+      priority: 2000
   launch_multiballextended_video_5:
     multiball_extended_slide_5:
       action: play
       expire: 9s
+      priority: 2000
   launch_multiballextended_video_6:
     multiball_extended_slide_6:
       action: play
       expire: 9s
+      priority: 2000
   launch_multiballextended_video_7:
     multiball_extended_slide_7:
       action: play
       expire: 9s
+      priority: 2000
   launch_multiballextended_video_8:
     multiball_extended_slide_8:
       action: play
       expire: 9s
+      priority: 2000
 
 ###########################
 
@@ -2042,7 +2099,7 @@ shots:
   multiball_twenties_target_sanity_shot_5:
     switch: s_target_sanity_5
     profile: multiball_twenties_target_flash
-    enable_events: mlaunch_multiball_twenties
+    enable_events: launch_multiball_twenties
     disable_events: multiball_multiball_twenties_multiball_ended
     show_tokens:
       led: insert_12
@@ -2209,6 +2266,7 @@ sound_player:
       loops: -1
       mode_end_action: stop
       fade_out: 1s
+      priority: 2000
 
   display_lock_lit:
     multiball_lock_lit_sound_pool:

@@ -1,8 +1,8 @@
 #config_version=6
 mode:
   start_events: shub_start
-  stop_events: shub_stop, ball_ended
-  priority: 600
+  stop_events: shub_stop, game_ended, ball_ended, game_ending, ball_ending
+  priority: 1600
   restart_on_next_ball: false
 
 ###########################
@@ -342,17 +342,17 @@ shot_profiles:
         show: shub_shub_insert_flash_show
         speed: 65
         loops: -1
-        priority: 600
+        priority: 1600
       - name: lostflashing2
         show: shub_shub_insert_flash_show
         speed: 125
         loops: -1
-        priority: 600
+        priority: 1600
       - name: lostflashing3
         show: shub_shub_insert_flash_show
         speed: 185
         loops: -1
-        priority: 600
+        priority: 1600
       - name: lostoff
         show: off
 
@@ -364,7 +364,7 @@ shot_profiles:
         show: shub_gathering_target_blink_show
         speed: 15
         loops: -1
-        priority: 600
+        priority: 1600
 
   shub_gathering_main_ramp_profile:
     advance_on_hit: true
@@ -374,7 +374,7 @@ shot_profiles:
         show: shub_king_insert_flash_show
         speed: 65
         loops: -1
-        priority: 600
+        priority: 1600
       - name: gathering_off
         show: off
   shub_gathering_green_ramp_profile:
@@ -385,7 +385,7 @@ shot_profiles:
         show: shub_nyarla_insert_flash_show
         speed: 65
         loops: -1
-        priority: 600
+        priority: 1600
       - name: gathering_off
         show: off
   shub_gathering_cthulhu_ramp_profile:
@@ -396,7 +396,7 @@ shot_profiles:
         show: shub_cthulhu_insert_flash_show
         speed: 65
         loops: -1
-        priority: 600
+        priority: 1600
       - name: gathering_off
         show: off
 
@@ -408,7 +408,7 @@ shot_profiles:
         show: shub_young_target_blink_show
         speed: 15
         loops: -1
-        priority: 600
+        priority: 1600
 
   young_profile:
     advance_on_hit: true
@@ -418,12 +418,12 @@ shot_profiles:
         show: shub_shub_insert_flash_show
         speed: 65
         loops: -1
-        priority: 600
+        priority: 1600
       - name: youngflashing2
         show: shub_shub_insert_flash_show
         speed: 125
         loops: -1
-        priority: 600
+        priority: 1600
       - name: youngoff
         show: off
 
@@ -435,7 +435,7 @@ shot_profiles:
         show: shub_young_target_blink_show
         speed: 10
         loops: -1
-        priority: 600
+        priority: 1600
   shub_shubend2_bumper_profile:
     advance_on_hit: false
     block: false
@@ -444,7 +444,7 @@ shot_profiles:
         show: shub_young_target_blink_show
         speed: 20
         loops: -1
-        priority: 600
+        priority: 1600
 
   shub_shubend_orbit_profile:
     advance_on_hit: true
@@ -454,7 +454,7 @@ shot_profiles:
         show: shub_shub_insert_flash_show
         speed: 125
         loops: -1
-        priority: 600
+        priority: 1600
       - name: shubendoff
         show: off
 
@@ -466,7 +466,7 @@ shot_profiles:
         show: shub_target_blink_show
         speed: 15
         loops: 1
-        priority: 600
+        priority: 1600
 
 
 ###########################
@@ -1210,8 +1210,8 @@ variable_player:
     score: 600 * current_player.multiplier * current_player.spell_boost_multiplier
     shub_champion: 600 * current_player.multiplier * current_player.spell_boost_multiplier
   shub_gate_secret_library_shot_hit:
-    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier
-    shub_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    shub_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
 
 ###########################
 
@@ -1425,6 +1425,15 @@ sound_player:
       volume: 1
       mode_end_action: stop
       fade_out: 1s
+    shub_mission_woods_voice_pool:
+      action: play
+      volume: 2
+      events_when_stopped: launch_shub_indication_phase_1_voice_pool
+  launch_shub_indication_phase_1_voice_pool:
+    shub_indication_phase_1_voice_pool:
+      action: play
+      volume: 2
+
   multiball_rlyeh_has_started:
     cthulhu_music_calme:
       action: stop
@@ -1450,6 +1459,7 @@ sound_player:
     nyarla_sfx_new_step:
       action: play
       volume: 2
+      events_when_stopped: launch_gathering_voice_pool
     cthulhu_music_calme:
       action: stop    
     cthulhu_music:
@@ -1458,17 +1468,53 @@ sound_player:
       volume: 1
       mode_end_action: stop
       fade_out: 1s
+  launch_gathering_voice_pool:
+    shub_mission_gathering_voice_pool:
+      action: play
+      volume: 2
+      events_when_stopped: launch_shub_indication_phase_2_voice_pool
+  launch_shub_indication_phase_2_voice_pool:
+    shub_indication_phase_2_voice_pool:
+      action: play
+      volume: 2
 
   launch_young:
     nyarla_sfx_new_step:
       action: play
       volume: 2
+      events_when_stopped: launch_thousand_young_voice_pool
+  launch_thousand_young_voice_pool:
+    shub_mission_thousand_young_voice_pool:
+      action: play
+      volume: 2
+      events_when_stopped: launch_shub_indication_phase_3_voice_pool
+  launch_shub_indication_phase_3_voice_pool:
+    shub_indication_phase_3_voice_pool:
+      action: play
+      volume: 2
+
   launch_shubend:
     nyarla_sfx_new_step:
       action: play
       volume: 2
+      events_when_stopped: launch_shub_indication_phase_4_voice_pool
+  launch_shub_indication_phase_4_voice_pool:
+    shub_indication_phase_4_voice_pool:
+      action: play
+      volume: 2
+
+  shub_need_reload:
+    shub_indication_phase_4_reload_voice_pool:
+      action: play
+      volume: 2
+
   launch_shubkill:
     nyarla_sfx_new_step:
+      action: play
+      volume: 2
+      events_when_stopped: launch_shub_indication_kill_voice_pool
+  launch_shub_indication_kill_voice_pool:
+    shub_indication_kill_voice_pool:
       action: play
       volume: 2
 
@@ -1703,3 +1749,89 @@ sound_pools:
       - shub_voice_11
       - shub_voice_12
       - shub_voice_13
+
+  shub_mission_woods_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - shub_voice_woods_1
+      - shub_voice_woods_2
+      - shub_voice_woods_3
+      - shub_voice_woods_4
+
+  shub_indication_phase_1_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - shub_phase_1_voice_1
+      - shub_phase_1_voice_2
+      - shub_phase_1_voice_3
+
+  shub_mission_gathering_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - shub_voice_gathering_1
+      - shub_voice_gathering_2
+      - shub_voice_gathering_3
+      - shub_voice_gathering_4
+
+  shub_indication_phase_2_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - shub_phase_2_voice_1
+      - shub_phase_2_voice_2
+      - shub_phase_2_voice_3
+
+
+  shub_mission_thousand_young_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - shub_voice_thousand_young_1
+      - shub_voice_thousand_young_2
+      - shub_voice_thousand_young_3
+      - shub_voice_thousand_young_4
+
+  shub_indication_phase_3_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - shub_phase_3_voice_1
+      - shub_phase_3_voice_2
+      - shub_phase_3_voice_3
+
+  shub_indication_phase_4_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - shub_phase_4_voice_1
+      - shub_phase_4_voice_2
+      - shub_phase_4_voice_3
+
+  shub_indication_phase_4_reload_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - shub_phase_4_reload_voice_1
+      - shub_phase_4_reload_voice_2
+      - shub_phase_4_reload_voice_3
+
+  shub_indication_kill_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - shub_end_voice_1
+      - shub_end_voice_2
+      - shub_end_voice_3
+      - shub_end_voice_4

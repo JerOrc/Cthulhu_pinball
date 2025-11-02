@@ -1,7 +1,7 @@
 #config_version=6
 mode:
   start_events: charleston_win_start
-  stop_events: timer_quit_charleston_win_time_complete
+  stop_events: timer_quit_charleston_win_time_complete, game_ended, ball_ended, game_ending, ball_ending
   restart_on_next_ball: false
   priority: 300
 
@@ -130,3 +130,21 @@ sound_player:
       action: play
       loops: 0
       volume: 2
+      events_when_stopped: launch_charleston_end_voice_pool
+
+  launch_charleston_end_voice_pool:
+    charleston_end_indication_voice_pool:
+      action: play
+      volume: 2
+
+###########################
+
+sound_pools:
+  charleston_end_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - charleston_fin_voice_1
+      - charleston_fin_voice_2
+      - charleston_fin_voice_3

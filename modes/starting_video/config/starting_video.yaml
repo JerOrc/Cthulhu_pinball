@@ -3,7 +3,7 @@ mode:
   start_events: ball_will_start
   use_wait_queue: false
   priority: 1000
-  stop_events: timer_starting_video_slide_time_complete, starting_video_stop
+  stop_events: timer_starting_video_slide_time_complete, starting_video_stop, game_ended, ball_ended, game_ending, ball_ending
 
 ###########################
 

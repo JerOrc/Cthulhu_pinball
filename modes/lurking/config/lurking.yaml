@@ -1,7 +1,7 @@
 #config_version=6
 mode:
   start_events: lurking_start
-  stop_events: lurking_stop, ball_ended
+  stop_events: lurking_stop, game_ended, ball_ended, game_ending, ball_ending
   priority: 1200
   restart_on_next_ball: false
 
@@ -924,12 +924,18 @@ sound_player:
     lurking_laugh:
       action: play
       volume: 1
+      events_when_stopped: launch_lurking_indication_voice_pool
     lurking_music:
       action: play
       loops: 0
       volume: 2
       mode_end_action: stop
       fade_out: 1s
+      priority: 2500
+  launch_lurking_indication_voice_pool:
+    lurking_indication_voice_pool:
+      action: play
+      volume: 2
 
   advance_lurking_1:
     lurking_monster_pool:
@@ -1234,3 +1240,16 @@ sound_pools:
       - monster_sfx_5
       - monster_sfx_6
       - monster_sfx_7
+
+  lurking_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - lurking_debut_voice_1
+      - lurking_debut_voice_2
+      - lurking_debut_voice_3
+      - lurking_debut_voice_4
+      - lurking_debut_voice_5
+      - lurking_debut_voice_6
+      - lurking_debut_voice_7

@@ -1,7 +1,7 @@
 #config_version=6
 mode:
   start_events: mode_base_started, target_sanity_start
-  stop_events: sanity_targets_stop
+  stop_events: sanity_targets_stop, game_ended, ball_ended, game_ending, ball_ending
   priority: 200
   restart_on_next_ball: true
 
@@ -228,7 +228,7 @@ counters:
   stay_asylum_counter:
     count_events: s_spinner_active
     starting_count: 0
-    count_complete_value: 5
+    count_complete_value: 4
     events_when_complete: asylum_stay
     reset_on_complete: true
     disable_on_complete: false

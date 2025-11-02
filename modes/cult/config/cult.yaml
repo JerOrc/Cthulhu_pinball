@@ -1,8 +1,8 @@
 #config_version=6
 mode:
   start_events: cult_start
-  stop_events: cult_stop, ball_ended
-  priority: 600
+  stop_events: cult_stop, game_ended, ball_ended, game_ending, ball_ending
+  priority: 1600
   restart_on_next_ball: false
 
 ###########################
@@ -245,46 +245,46 @@ widget_player:
 shot_profiles:
   cult_profile:
     advance_on_hit: true
-    block: true
+    block: false
     states:
       - name: cultactive
         show: cult_ramp_blink_show
         speed: 10
         loops: -1
-        priority: 600
+        priority: 1600
       - name: off
         show: off
   cult_profile_aza:
     advance_on_hit: true
-    block: true
+    block: false
     states:
       - name: cultactive
         show: cult_azatoth_insert_flash_show
         speed: 65
         loops: -1
-        priority: 600
+        priority: 1600
       - name: off
         show: off
   cult_profile_library:
     advance_on_hit: true
-    block: true
+    block: false
     states:
       - name: cultactive
         show: cult_library_insert_flash_show
         speed: 65
         loops: -1
-        priority: 600
+        priority: 1600
       - name: off
         show: off
   cult_profile_king:
     advance_on_hit: true
-    block: true
+    block: false
     states:
       - name: cultactive
         show: cult_king_insert_flash_show
         speed: 65
         loops: -1
-        priority: 600
+        priority: 1600
       - name: off
         show: off
   cult_profile_nyarla:
@@ -295,7 +295,7 @@ shot_profiles:
         show: cult_nyarla_insert_flash_show
         speed: 65
         loops: -1
-        priority: 600
+        priority: 1600
       - name: off
         show: off
   cult_profile_cthulhu:
@@ -306,18 +306,18 @@ shot_profiles:
         show: cult_cthulhu_insert_flash_show
         speed: 65
         loops: -1
-        priority: 600
+        priority: 1600
       - name: off
         show: off
   cult_profile_shub:
     advance_on_hit: true
-    block: true
+    block: false
     states:
       - name: cultactive
         show: cult_shub_insert_flash_show
         speed: 65
         loops: -1
-        priority: 600
+        priority: 1600
       - name: off
         show: off
 
@@ -329,7 +329,7 @@ shot_profiles:
         show: cult_target_blink_show
         speed: 15
         loops: 1
-        priority: 600
+        priority: 1600
 
 ###########################
 
@@ -881,9 +881,8 @@ variable_player:
     score: 500 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
     cult_champion: 500 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
   cult_gate_secret_library_shot_hit:
-    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
-    cult_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
-
+    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier * current_player.library_boost_multiplier
+    cult_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier * current_player.library_boost_multiplier
 
 ###########################
 
@@ -920,9 +919,14 @@ sound_player:
       volume: 1
       mode_end_action: stop
       fade_out: 1s
+    cult_indication_voice_pool:
+      action: play
+      volume: 2
+
   multiball_rlyeh_has_started:
     cult_music:
       action: stop
+
 
   relaunch_cult_music:
     dramatic_music_pool, suspens_music_pool:
@@ -1060,6 +1064,15 @@ sound_pools:
       - cult_voice_5
       - cult_voice_6
       - cult_voice_7
+
+  cult_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - cult_debut_voice_1
+      - cult_debut_voice_2
+      - cult_debut_voice_3
 
   cult_sfx_pool:
     load: on_demand

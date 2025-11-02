@@ -1,8 +1,7 @@
 #config_version=6
 mode:
   start_events: multiball_portal_start
-  stop_events: multiball_portal_stop, ball_ended
-  priority: 900
+  stop_events: multiball_portal_stop, game_ended, ball_ended, game_ending, ball_ending
   restart_on_next_ball: false
 
 ###########################
@@ -20,10 +19,10 @@ event_player:
 
 multiballs:
   multiball_portal_multiball:
-    ball_count: 2
-    ball_count_type: total
+    ball_count: 1
+    ball_count_type: add
     start_events: launch_multiball_portal_3
-    shoot_again: 15s
+    shoot_again: 30s
 
 ###########################
 
@@ -94,7 +93,7 @@ widget_player:
 timers:
   multiball_portal_DT_reset_time:
     start_value: 0
-    end_value: 20
+    end_value: 30
     direction: up
     tick_interval: 1s
     restart_on_complete: true
@@ -137,7 +136,7 @@ shot_profiles:
         show: multiball_portal_blink_show
         speed: 25
         loops: -1
-        priority: 600
+        priority: 1600
 
 ###########################
 
@@ -288,7 +287,7 @@ sound_player:
       volume: 2
       mode_end_action: stop
       fade_out: 1s
-
+      priority: 2000
 
   multiball_portal_drop_target_1_shot_hit:
     drop_target_sounds:
@@ -313,6 +312,19 @@ sound_player:
       volume: 1
 
   open_multiball_portal:
-    bumpers_voice_pool:
+    multiball_portal_bumpers_indication_voice_pool:
       action: play
-      volume: 1
+      volume: 2
+
+###########################
+
+sound_pools:
+  multiball_portal_bumpers_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - dimensional_portal_ready_monster_voice_1
+      - dimensional_portal_ready_monster_voice_2
+      - dimensional_portal_ready_monster_voice_3
+      - dimensional_portal_ready_monster_voice_4

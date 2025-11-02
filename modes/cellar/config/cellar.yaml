@@ -1,7 +1,7 @@
 #config_version=6
 mode:
   start_events: cellar_start
-  stop_events: cellar_stop, ball_ended
+  stop_events: cellar_stop, game_ended, ball_ended, game_ending, ball_ending
   priority: 900
   restart_on_next_ball: false
 
@@ -328,6 +328,7 @@ sound_player:
       loops: -1
       mode_end_action: stop
       fade_out: 2s
+      priority: 2000
 
   lock_investigator:
     cult_music, graveyard_music, city_music:
@@ -338,7 +339,13 @@ sound_player:
       loops: -1
       mode_end_action: stop
       fade_out: 2s
+      priority: 2000
     crazy_cellar_voice_pool:
+      action: play
+      volume: 2
+      events_when_stopped: launch_cellar_indication_voice_pool
+  launch_cellar_indication_voice_pool:
+    cellar_indication_voice_pool:
       action: play
       volume: 2
 
@@ -403,3 +410,14 @@ sound_pools:
       - cellar_voice_no_escape_5
       - cellar_voice_no_escape_6
       - cellar_voice_no_escape_7
+
+  cellar_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - cellar_debut_multi_voice_1
+      - cellar_debut_multi_voice_2
+      - cellar_debut_multi_voice_3
+      - cellar_debut_multi_voice_4
+      - cellar_debut_multi_voice_5

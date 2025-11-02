@@ -2,7 +2,7 @@
 
 mode:
   start_events: library_start
-  stop_events: library_stop, timer_exit_library_time_complete
+  stop_events: library_stop, timer_exit_library_time_complete, game_ended, ball_ended, game_ending, ball_ending
   priority: 700
   restart_on_next_ball: false
 
@@ -65,25 +65,27 @@ variable_player:
       action: set
  
   library_target_group_complete:
-    score: 10000  * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 10000  * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
     bonus_targets: 1
+    library_boost_multiplier: 1
+
   twenties_target_library_1_shot_hit:
-    score: 500 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 500 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
     bonus_targets: 1
   twenties_target_library_2_shot_hit:
-    score: 500 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 500 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
     bonus_targets: 1
   twenties_target_library_3_shot_hit:
-    score: 500 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 500 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
     bonus_targets: 1
   twenties_target_library_4_shot_hit:
-    score: 500 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 500 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
     bonus_targets: 1
   twenties_target_library_5_shot_hit:
-    score: 500 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 500 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
     bonus_targets: 1
   twenties_target_library_6_shot_hit:
-    score: 500 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 500 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
     bonus_targets: 1
 
 ###########################
@@ -149,7 +151,7 @@ show_player:
     library_target_group_complete_show:
       speed: 5
       loops: 10
-      priority: 1
+      priority: 1000
 
   mode_library_started:
     library_side_flash_show:

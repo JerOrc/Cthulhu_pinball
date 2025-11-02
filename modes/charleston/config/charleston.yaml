@@ -1,8 +1,8 @@
 #config_version=6
 mode:
   start_events: charleston_start
-  stop_events: charleston_stop, ball_ended
-  priority: 600
+  stop_events: charleston_stop, game_ended, ball_ended, game_ending, ball_ending
+  priority: 1600
   restart_on_next_ball: false
 
 ball_holds:
@@ -16,7 +16,8 @@ ball_holds:
 event_player:
   mode_charleston_started: mode_twenties_stop, hold_stop, launch_random_charleston_video
   charleston_gate_library_shot_hit: library_charleston_start
-  charleston_mission_target_group_off_complete: charleston_stop, charleston_win_start
+  # charleston_mission_target_group_off_complete: charleston_stop, charleston_win_start
+  "{current_player.charleston_target_count<=0}": charleston_stop, charleston_win_start
   launch_charleston_multiball: release_charleston
   charleston_scoop_haut_shot_hit{current_player.count_multiball_charleston=='zero'}: launch_sounds_multiball
   relaunch_charleston_video: launch_random_charleston_video|5s
@@ -251,7 +252,7 @@ shot_profiles:
         show: charleston_target_blink_show
         speed: 15
         loops: 1
-        priority: 700
+        priority: 600
 
 ###########################
 
@@ -425,39 +426,6 @@ shots:
     hit_events: action_valid_charleston_shot_12
     show_tokens:
       led: insert_13
-
-
-
-  charleston_target_library_1_base_shot:
-    switch: s_target_library_1
-    profile: charleston_target_flash
-    show_tokens:
-      led: insert_80
-  charleston_target_library_2_base_shot:
-    switch: s_target_library_2
-    profile: charleston_target_flash
-    show_tokens:
-      led: insert_79
-  charleston_target_library_3_base_shot:
-    switch: s_target_library_3
-    profile: charleston_target_flash
-    show_tokens:
-      led: insert_78
-  charleston_target_library_4_base_shot:
-    switch: s_target_library_4
-    profile: charleston_target_flash
-    show_tokens:
-      led: insert_77
-  charleston_target_library_5_base_shot:
-    switch: s_target_library_5
-    profile: charleston_target_flash
-    show_tokens:
-      led: insert_76
-  charleston_target_library_6_base_shot:
-    switch: s_target_library_6
-    profile: charleston_target_flash
-    show_tokens:
-      led: insert_75
 
 
   charleston_target_library_1_shot:
@@ -1219,8 +1187,8 @@ variable_player:
     score: 500 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
     charleston_champion: 500 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
   charleston_gate_secret_library_shot_hit:
-    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
-    charleston_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
+    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier * current_player.library_boost_multiplier
+    charleston_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier * current_player.library_boost_multiplier
 
   sanity_charleston_group_complete:
     score: 5000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
@@ -1282,6 +1250,9 @@ light_player:
 
 sound_player:
   mode_charleston_started:
+    charleston_indication_voice_pool:
+      action: play
+      volume: 2
     charleston_music:
       action: play
       loops: -1
@@ -1560,6 +1531,17 @@ sound_pools:
       - charleston_multiball_voice_2
       - charleston_multiball_voice_3
       - charleston_multiball_voice_4
+
+
+  charleston_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - charleston_debut_voice_1
+      - charleston_debut_voice_2
+      - charleston_debut_voice_3
+
 
 ###########################
 

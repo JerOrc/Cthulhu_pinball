@@ -1,14 +1,14 @@
 #config_version=6
 mode:
   start_events: pursuit_twenties_start
-  stop_events: pursuit_twenties_stop, ball_ended
+  stop_events: pursuit_twenties_stop, game_ended, ball_ended, game_ending, ball_ending
   priority: 1600
   restart_on_next_ball: false
 
 ###########################
 
 event_player:
-  mode_pursuit_twenties_started: twenties_stop, hold_stop, launch_random_pursuit_video
+  mode_pursuit_twenties_started: twenties_stop, hold_stop, launch_random_pursuit_video, launch_pursuit_voice, launch_pursuit_music|1s
   timer_exit_pursuit_time_complete: pursuit_twenties_stop, twenties_start
   pursuit_twenties_roll_asylum_shot_bonusflashing_hit: shaker_shake
   pursuit_twenties_roll_library_shot_bonusflashing_hit: shaker_shake
@@ -25,6 +25,9 @@ event_player:
   "{device.shots.pursuit_twenties_main_ramp_shot.state_name=='bonusflashing'}": give_shoot_points
 
   "{device.shots.pursuit_twenties_roll_asylum_shot.state_name=='bonusflashing' and device.shots.pursuit_twenties_roll_library_shot.state_name=='bonusflashing' and device.shots.pursuit_twenties_roll_space_shot.state_name=='bonusflashing' and device.shots.pursuit_twenties_cthulhu_ramp_shot.state_name=='bonusflashing' and device.shots.pursuit_twenties_green_ramp_shot.state_name=='bonusflashing' and device.shots.pursuit_twenties_main_ramp_shot.state_name=='bonusflashing'}": stop_voice_pursuit
+
+  multiball_multiball_twenties_multiball_ended: relaunch_pursuit_music
+  multiball_rlyeh_has_stopped: relaunch_pursuit_music
 
 ###########################
 
@@ -748,16 +751,37 @@ show_player:
 ###########################
 
 sound_player:
-  mode_pursuit_twenties_started:
-    pursuit_voice_pool:
+  launch_pursuit_music:
+    pursuit_music_1:
       action: play
-      volume: 2
-    pursuit_music:
-      action: play
+      track: music
       loops: -1
       volume: 1
       mode_end_action: stop
       fade_out: 2s
+  relaunch_pursuit_music:
+    pursuit_music_1:
+      action: play
+      track: music
+      loops: -1
+      volume: 1
+      mode_end_action: stop
+      fade_out: 2s
+
+  multiball_rlyeh_has_started:
+    pursuit_music_1:
+      action: stop
+
+  launch_pursuit_voice:
+    pursuit_voice_pool:
+      action: play
+      volume: 2
+      events_when_stopped: launch_pursuit_indication_voice_pool
+
+  launch_pursuit_indication_voice_pool:
+    pursuit_indication_voice_pool:
+      action: play
+      volume: 2
 
   timer_pursuit_voice_time_complete:
     pursuit_voice_pool:
@@ -805,6 +829,15 @@ sound_pools:
       - pursuit_voice_15
       - pursuit_voice_16
 
+  pursuit_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - pursuit_debut_voice_1
+      - pursuit_debut_voice_2
+      - pursuit_debut_voice_3
+      - pursuit_debut_voice_4
 
 ###########################
 

@@ -1,0 +1,124 @@
+aza_champion:
+- - MZA
+  - 32640
+- - HPL
+  - 20000
+- - HPL
+  - 15000
+charleston_champion:
+- - PAT
+  - 1034120
+- - MZA
+  - 768610
+- - SMC
+  - 718140
+city_champion:
+- - MZA
+  - 198840
+- - AAA
+  - 168780
+- - MZA
+  - 166480
+combos_champion:
+- - HPL
+  - 5
+- - SKA
+  - 5
+- - MZA
+  - 5
+cthulhu_champion:
+- - HPL
+  - 20000
+- - HPL
+  - 15000
+- - HPL
+  - 10000
+cult_champion:
+- - JMS
+  - 143570
+- - AAA
+  - 112080
+- - MZA
+  - 72780
+graveyard_champion:
+- - MZA
+  - 438760
+- - SKA
+  - 335520
+- - EMI
+  - 304440
+king_champion:
+- - SKA
+  - 294890
+- - FOU
+  - 102760
+- - AAA
+  - 44600
+loops_champion:
+- - PAT
+  - 47
+- - SKA
+  - 26
+- - THY
+  - 20
+nyarla_champion:
+- - ALX
+  - 1613750
+- - WIS
+  - 84880
+- - MZA
+  - 78990
+radio_champion:
+- - PAT
+  - 307910
+- - BEA
+  - 296560
+- - PAT
+  - 259320
+score:
+- - HPL
+  - 100000000
+- - LEE
+  - 15580345
+- - SKA
+  - 4832911
+- - ALX
+  - 3750646
+- - MZA
+  - 3712479
+- - MZA
+  - 3658208
+- - PAT
+  - 2901398
+- - BAT
+  - 2808691
+- - DOM
+  - 2742532
+shub_champion:
+- - EMI
+  - 33230
+- - HPL
+  - 20000
+- - MZA
+  - 16240
+speakeasy_champion:
+- - MZA
+  - 944990
+- - EMI
+  - 762410
+- - KLW
+  - 279240
+videofordt_champion:
+- - HPL
+  - 40
+- - HPL
+  - 37
+- - HPL
+  - 33
+videomonster_champion:
+- - EMI
+  - 88
+- - WIS
+  - 23
+- - HPL
+  - 15

@@ -2,7 +2,7 @@
 
 mode:
   start_events: start_carousel_mode
-  stop_events: carousel_item_selected, stop_carousel
+  stop_events: carousel_item_selected, stop_carousel, game_ended, ball_ended, game_ending, ball_ending
   code: mpf.modes.carousel.code.carousel.Carousel
   events_when_stopped: carousel_mission_selected
   use_wait_queue: true
@@ -854,6 +854,39 @@ sound_player:
     carousel_voice_speakeasy:
       action: play
       volume: 2
+  carousel_mission4_highlighted:
+    carousel_graveyard_voice_pool:
+      action: play
+      volume: 2
+  carousel_mission5_highlighted:
+    carousel_cult_voice_pool:
+      action: play
+      volume: 2
+  carousel_mission6_highlighted:
+    carousel_city_voice_pool:
+      action: play
+      volume: 2
+
+  carousel_missionAZATHOTH_highlighted:
+    carousel_aza_voice_pool:
+      action: play
+      volume: 2
+  carousel_missionKING_highlighted:
+    carousel_king_voice_pool:
+      action: play
+      volume: 2
+  carousel_missionNYARLA_highlighted:
+    carousel_nyarla_voice_pool:
+      action: play
+      volume: 2
+  carousel_missionCTHULHU_highlighted:
+    carousel_cthulhu_voice_pool:
+      action: play
+      volume: 2
+  carousel_missionSHUB_highlighted:
+    carousel_shub_voice_pool:
+      action: play
+      volume: 2
 
 ###########################
 
@@ -878,3 +911,92 @@ sound_pools:
       - carousel_voice_radio_1
       - carousel_voice_radio_2
       - carousel_voice_radio_3
+
+  carousel_graveyard_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - carousel_voice_graveyard_1
+      - carousel_voice_graveyard_2
+      - carousel_voice_graveyard_3
+      - carousel_voice_graveyard_4
+      - carousel_voice_graveyard_5
+      - carousel_voice_graveyard_6
+      - carousel_voice_graveyard_7
+
+  carousel_cult_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - carousel_voice_cult_temple_1
+      - carousel_voice_cult_temple_2
+      - carousel_voice_cult_temple_3
+      - carousel_voice_cult_temple_4
+      - carousel_voice_cult_temple_5
+
+  carousel_city_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - carousel_voice_sunken_city_1
+      - carousel_voice_sunken_city_2
+      - carousel_voice_sunken_city_3
+      - carousel_voice_sunken_city_4
+
+  carousel_aza_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - carousel_voice_aza_1
+      - carousel_voice_aza_2
+      - carousel_voice_aza_3
+      - carousel_voice_aza_4
+
+  carousel_king_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - carousel_voice_king_1
+      - carousel_voice_king_2
+      - carousel_voice_king_3
+      - carousel_voice_king_4
+      - carousel_voice_king_5
+
+  carousel_nyarla_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - carousel_voice_nyarla_1
+      - carousel_voice_nyarla_2
+      - carousel_voice_nyarla_3
+      - carousel_voice_nyarla_4
+
+  carousel_cthulhu_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - carousel_voice_cthulhu_1
+      - carousel_voice_cthulhu_2
+      - carousel_voice_cthulhu_3
+      - carousel_voice_cthulhu_4
+      - carousel_voice_cthulhu_5
+      - carousel_voice_cthulhu_6
+      - carousel_voice_cthulhu_7
+
+  carousel_shub_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - carousel_voice_shub_1
+      - carousel_voice_shub_2
+      - carousel_voice_shub_3
+      - carousel_voice_shub_4
+      - carousel_voice_shub_5

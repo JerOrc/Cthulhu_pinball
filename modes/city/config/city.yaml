@@ -1,7 +1,7 @@
 #config_version=6
 mode:
   start_events: city_start
-  stop_events: city_stop, ball_ended
+  stop_events: city_stop, game_ended, ball_ended, game_ending, ball_ending
   priority: 600
   restart_on_next_ball: false
 
@@ -16,6 +16,9 @@ event_player:
   city_drop_target_4_shot_lit_hit: shaker_shake
   "{current_player.city_DT_row_count_value==4}": reset_city_DT, city_DT_row_complete
   "{current_player.city_DT_count==0}": city_stop, city_win_start
+  "{current_player.city_DT_count==3}": launch_indication_voice_level_1
+  "{current_player.city_DT_count==2}": launch_indication_voice_level_2
+  "{current_player.city_DT_count==1}": launch_indication_voice_level_3
   s_action_active{current_player.variable_number_of_bullet_value > 0}: action_valid_city_shot, shaker_shake
   "{current_player.city_sanity_gauge>=2}": launch_sanity_target_voice
   "{current_player.city_sanity_gauge>=4}": launch_sanity_target_voice
@@ -1042,8 +1045,8 @@ variable_player:
     score: 7000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
     city_champion: 7000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
   library_target_group_complete:
-    score: 10000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
-    city_champion: 10000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier
+    score: 10000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier * current_player.library_boost_multiplier
+    city_champion: 10000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.mission_boost_multiplier * current_player.library_boost_multiplier
 
 ###########################
 
@@ -1067,10 +1070,30 @@ sound_player:
       volume: 1
       mode_end_action: stop
       fade_out: 1s
+    city_indication_voice_pool:
+      action: play
+      volume: 2
   multiball_rlyeh_has_started:
     city_music:
       action: stop
 
+  launch_indication_voice_level_1:
+    city_niveau_1_voice_1:
+      action: play
+      volume: 2
+  launch_indication_voice_level_2:
+    city_niveau_2_voice_1:
+      action: play
+      volume: 2
+  launch_indication_voice_level_3:
+    city_niveau_3_voice_1:
+      action: play
+      volume: 2
+      events_when_stopped: launch_indication_voice_level_4
+  launch_indication_voice_level_4:
+    city_niveau_4_voice_1:
+      action: play
+      volume: 2
 
   relaunch_city_music:
     dramatic_music_pool, suspens_music_pool:
@@ -1228,6 +1251,15 @@ sound_pools:
       - city_voice_20
       - city_voice_21
       - city_voice_22
+
+  city_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - city_debut_voice_1
+      - city_debut_voice_2
+
 
   city_sfx_pool:
     load: on_demand

@@ -1,8 +1,8 @@
 #config_version=6
 mode:
   start_events: cthulhu_start
-  stop_events: cthulhu_stop, ball_ended
-  priority: 600
+  stop_events: cthulhu_stop, game_ended, ball_ended, game_ending, ball_ending
+  priority: 1600
   restart_on_next_ball: false
 
 ###########################
@@ -295,7 +295,7 @@ shot_profiles:
         show: cthulhu_target_blink_show
         speed: 15
         loops: 1
-        priority: 600
+        priority: 1600
 
   locate_profile:
     advance_on_hit: true
@@ -345,7 +345,7 @@ shot_profiles:
 
   rlyeh_aza_ramp_profile:
     advance_on_hit: true
-    block: true
+    block: false
     states:
       - name: rlyehflashing
         show: cthulhu_azatoth_insert_flash_show
@@ -356,7 +356,7 @@ shot_profiles:
         show: off
   rlyeh_library_ramp_profile:
     advance_on_hit: true
-    block: true
+    block: false
     states:
       - name: rlyehflashing
         show: cthulhu_library_insert_flash_show
@@ -367,7 +367,7 @@ shot_profiles:
         show: off
   rlyeh_main_ramp_profile:
     advance_on_hit: true
-    block: true
+    block: false
     states:
       - name: rlyehflashing
         show: cthulhu_king_insert_flash_show
@@ -1360,8 +1360,8 @@ variable_player:
     score: 600 * current_player.multiplier * current_player.spell_boost_multiplier
     cthulhu_champion: 600 * current_player.multiplier * current_player.spell_boost_multiplier
   cthulhu_gate_secret_library_shot_hit:
-    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier
-    cthulhu_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    cthulhu_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
 
 ###########################
 
@@ -1641,6 +1641,15 @@ sound_player:
       volume: 1
       mode_end_action: stop
       fade_out: 1s
+    cthulhu_mission_locate_rlyeh_voice_pool:
+      action: play
+      volume: 2
+      events_when_stopped: launch_cthulhu_phase_1_indication_voice_pool
+  launch_cthulhu_phase_1_indication_voice_pool:
+    cthulhu_mission_locate_indication_voice_pool:  
+      action: play
+      volume: 2
+
   multiball_rlyeh_has_started:
     cthulhu_music_calme:
       action: stop
@@ -1655,6 +1664,13 @@ sound_player:
       mode_end_action: stop
       fade_out: 1s
 
+  launch_action_cthulhu_music:
+    cthulhu_music:
+      action: play
+      loops: -1
+      volume: 1
+      mode_end_action: stop
+      fade_out: 1s
 
   timer_cthulhu_voice_time_complete:
     cthulhu_voice_pool:
@@ -1667,6 +1683,7 @@ sound_player:
     nyarla_sfx_new_step:
       action: play
       volume: 2
+      events_when_stopped: launch_ship_voice_pool
     cthulhu_music_calme:
       action: stop    
     cthulhu_music_0:
@@ -1676,28 +1693,50 @@ sound_player:
       events_when_stopped: launch_action_cthulhu_music
       mode_end_action: stop
       fade_out: 1s
-
-  launch_action_cthulhu_music:
-    cthulhu_music:
+  launch_ship_voice_pool:
+    cthulhu_mission_find_ship_voice_pool:
       action: play
-      loops: -1
-      volume: 1
-      mode_end_action: stop
-      fade_out: 1s
+      volume: 2
+      events_when_stopped: launch_cthulhu_phase_2_indication_voice_pool
+  launch_cthulhu_phase_2_indication_voice_pool:
+    cthulhu_mission_ship_indication_voice_pool:
+      action: play
+      volume: 2
 
   launchrlyeh:
     nyarla_sfx_new_step:
       action: play
       volume: 2
+      events_when_stopped: launch_ryleh_rises_voice_pool
+  launch_ryleh_rises_voice_pool:
+    cthulhu_mission_rlyeh_rises_voice_pool:
+      action: play
+      volume: 2
+      events_when_stopped: launch_cthulhu_phase_3_indication_voice_pool
+  launch_cthulhu_phase_3_indication_voice_pool:
+    cthulhu_mission_rlyeh_indication_voice_pool:
+      action: play
+      volume: 2
+
   launchcthulhuend:
     nyarla_sfx_new_step:
       action: play
       volume: 2
+      events_when_stopped: launch_cthulhu_phase_4_indication_voice_pool
+  launch_cthulhu_phase_4_indication_voice_pool:
+    cthulhu_mission_end_indication_voice_pool:
+      action: play
+      volume: 2
+
   launchcthulhukill:
     nyarla_sfx_new_step:
       action: play
       volume: 2
-
+      events_when_stopped: launch_cthulhu_phase_kill_indication_voice_pool
+  launch_cthulhu_phase_kill_indication_voice_pool:
+    cthulhu_mission_kill_indication_voice_pool:
+      action: play
+      volume: 2
 
   cthulhu_sling_left_shot_hit:
     cthulhu_sfx_pool:
@@ -1921,3 +1960,89 @@ sound_pools:
       - cthulhu_hit_sfx_4
       - cthulhu_hit_sfx_5
       - cthulhu_hit_sfx_6
+
+  cthulhu_mission_locate_rlyeh_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - cthulhu_voice_locate_rlyeh_1
+      - cthulhu_voice_locate_rlyeh_2
+      - cthulhu_voice_locate_rlyeh_3
+      - cthulhu_voice_locate_rlyeh_4
+      - cthulhu_voice_locate_rlyeh_5
+      - cthulhu_voice_locate_rlyeh_6
+
+  cthulhu_mission_locate_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - cthulhu_phase_1_voice_1
+      - cthulhu_phase_1_voice_2
+      - cthulhu_phase_1_voice_3
+      - cthulhu_phase_1_voice_4
+
+
+  cthulhu_mission_find_ship_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - cthulhu_voice_find_ship_1
+      - cthulhu_voice_find_ship_2
+      - cthulhu_voice_find_ship_3
+      - cthulhu_voice_find_ship_4
+      - cthulhu_voice_find_ship_5
+      - cthulhu_voice_find_ship_6
+
+  cthulhu_mission_ship_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - cthulhu_phase_2_voice_1
+      - cthulhu_phase_2_voice_2
+      - cthulhu_phase_2_voice_3
+      - cthulhu_phase_2_voice_4
+      - cthulhu_phase_2_voice_5
+
+
+  cthulhu_mission_rlyeh_rises_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - cthulhu_voice_rlyeh_rises_1
+      - cthulhu_voice_rlyeh_rises_2
+      - cthulhu_voice_rlyeh_rises_3
+      - cthulhu_voice_rlyeh_rises_4
+      - cthulhu_voice_rlyeh_rises_5
+
+  cthulhu_mission_rlyeh_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - cthulhu_phase_3_voice_1
+      - cthulhu_phase_3_voice_2
+      - cthulhu_phase_3_voice_3
+
+  cthulhu_mission_end_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - cthulhu_phase_4_voice_1
+      - cthulhu_phase_4_voice_2
+      - cthulhu_phase_4_voice_3
+
+  cthulhu_mission_kill_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - cthulhu_end_voice_1
+      - cthulhu_end_voice_2
+      - cthulhu_end_voice_3
+      - cthulhu_end_voice_4

@@ -1,14 +1,14 @@
 #config_version=6
 mode:
   start_events: fordt_ride_start
-  stop_events: fordt_ride_stop, ball_ended
+  stop_events: fordt_ride_stop, game_ended, ball_ended, game_ending, ball_ending
   priority: 1600
   restart_on_next_ball: false
 
 ###########################
 
 event_player:
-  mode_fordt_ride_started: twenties_stop, hold_stop, launch_fordt_ride_timer
+  mode_fordt_ride_started: twenties_stop, hold_stop, launch_fordt_ride_timer, launch_fordt_ride_music|1s
   timer_exit_fordt_ride_time_complete: show_fordt_ride_bonus
   timer_exit_fordt_ride_bonus_time_complete: fordt_ride_stop, twenties_start
   fordt_ride_roll_fordt_shot_hit: shaker_shake
@@ -512,7 +512,11 @@ light_player:
       color: white
     led_102:
       color: white
-  
+    side_led_right:
+      color: white
+    side_led_left:
+      color: white
+
 ###########################
 
 show_player:
@@ -526,6 +530,14 @@ show_player:
 ###########################
 
 sound_player:
+  launch_fordt_ride_music:
+    fordt_ride_music_1:
+      action: play
+      loops: -1
+      track: music
+      mode_end_action: stop
+      fade_out: 1s
+
   fordt_ride_team_1_shot_hit:
     fordt_ride_sfx_pool:
       action: play

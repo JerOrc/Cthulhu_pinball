@@ -1,24 +1,24 @@
 #config_version=6
 mode:
   start_events: random_available_mission_start
-  stop_events: random_available_mission_stop
-  priority: 200
+  stop_events: random_available_mission_stop, game_ended, ball_ended, game_ending, ball_ending
+  priority: 5000
   restart_on_next_ball: false
 
 ###########################
 
 event_player:
-  radio_start: random_available_mission_stop
-  charleston_start: random_available_mission_stop
-  speakeasy_start: random_available_mission_stop
-  cult_start: random_available_mission_stop
-  graveyard_start: random_available_mission_stop
-  city_start: random_available_mission_stop
-  aza_start: random_available_mission_stop
-  king_start: random_available_mission_stop
-  nyarla_start: random_available_mission_stop
-  cthulhu_start: random_available_mission_stop
-  shub_start: random_available_mission_stop
+  mode_radio_started: random_available_mission_stop
+  mode_charleston_started: random_available_mission_stop
+  mode_speakeasy_started: random_available_mission_stop
+  mode_cult_started: random_available_mission_stop
+  mode_graveyard_started: random_available_mission_stop
+  mode_city_started: random_available_mission_stop
+  mode_aza_started: random_available_mission_stop
+  mode_king_started: random_available_mission_stop
+  mode_nyarla_started: random_available_mission_stop
+  mode_cthulhu_started: random_available_mission_stop
+  mode_shub_started: random_available_mission_stop
 
 ###########################
 

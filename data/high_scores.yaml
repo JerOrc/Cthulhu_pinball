@@ -1,124 +1,124 @@
 aza_champion:
 - - LEE
-  - 670170
+  - 463160
 - - LEE
-  - 579450
-- - LEE
-  - 293490
+  - 224260
+- - HPL
+  - 1000
 charleston_champion:
 - - LEE
-  - 1516120
+  - 762950
 - - LEE
-  - 1074160
-- - LEE
-  - 836620
+  - 72140
+- - AAA
+  - 58000
 city_champion:
 - - LEE
-  - 602830
+  - 758490
 - - LEE
-  - 600120
+  - 381700
 - - LEE
-  - 599880
+  - 171340
 combos_champion:
 - - LEE
-  - 16
+  - 8
+- - HPL
+  - 5
 - - LEE
-  - 9
-- - LEE
-  - 7
+  - 5
 cthulhu_champion:
 - - LEE
-  - 726220
+  - 407640
+- - AAA
+  - 36800
 - - LEE
-  - 473570
-- - LEE
-  - 198720
+  - 18000
 cult_champion:
+- - HPL
+  - 473584
 - - LEE
-  - 410920
+  - 334819
 - - LEE
-  - 402310
-- - LEE
-  - 360300
+  - 279544
 graveyard_champion:
 - - LEE
-  - 292750
+  - 216612
 - - LEE
-  - 263520
+  - 124700
 - - LEE
-  - 261360
+  - 90036
 king_champion:
 - - LEE
-  - 800680
+  - 2187070
+- - AAA
+  - 1351600
 - - LEE
-  - 718000
-- - LEE
-  - 595080
+  - 614590
 loops_champion:
 - - LEE
-  - 23
+  - 12
 - - LEE
-  - 11
+  - 8
 - - LEE
-  - 10
+  - 8
 nyarla_champion:
+- - AAA
+  - 3535840
 - - LEE
-  - 3861440
+  - 1403220
 - - LEE
-  - 2583090
-- - LEE
-  - 1519040
+  - 1290400
 radio_champion:
 - - LEE
-  - 475560
+  - 259153
 - - LEE
-  - 304140
-- - LEE
-  - 282000
+  - 189061
+- - AAA
+  - 174400
 score:
 - - HPL
   - 100000000
 - - LEE
-  - 12157049
+  - 8422602
+- - AAA
+  - 6660639
 - - LEE
-  - 9849364
+  - 5412242
 - - LEE
-  - 9595001
+  - 4593278
 - - LEE
-  - 8662028
+  - 4492896
 - - LEE
-  - 6655219
+  - 4352656
 - - LEE
-  - 6190266
-- - LEE
-  - 4975558
-- - LEE
-  - 4872413
+  - 4057766
+- - HPL
+  - 3851231
 shub_champion:
 - - LEE
-  - 1843040
+  - 737840
 - - LEE
-  - 498670
+  - 164280
 - - LEE
-  - 81000
+  - 132310
 speakeasy_champion:
-- - EMI
-  - 762410
 - - LEE
-  - 566280
+  - 805240
 - - LEE
-  - 540900
+  - 419830
+- - LEE
+  - 389900
 videofordt_champion:
+- - HPL
+  - 20
 - - LEE
-  - 40
+  - 12
+- - HPL
+  - 10
+videomonster_champion:
+- - LEE
+  - 55
 - - LEE
   - 37
 - - LEE
-  - 33
-videomonster_champion:
-- - EMI
-  - 88
-- - LEE
-  - 86
-- - LEE
-  - 78
+  - 36

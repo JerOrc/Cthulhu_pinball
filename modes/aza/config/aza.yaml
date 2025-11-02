@@ -1,7 +1,7 @@
 #config_version=6
 mode:
   start_events: aza_start
-  stop_events: aza_stop, azathoth_stop, ball_ended
+  stop_events: aza_stop, azathoth_stop, game_ended, ball_ended, game_ending, ball_ending
   priority: 600
   restart_on_next_ball: false
 
@@ -1021,8 +1021,8 @@ variable_player:
     score: 600 * current_player.multiplier * current_player.spell_boost_multiplier
     aza_champion: 600 * current_player.multiplier * current_player.spell_boost_multiplier
   aza_gate_secret_library_shot_hit:
-    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier
-    aza_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    aza_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
 
 ###########################
 
@@ -1199,6 +1199,15 @@ sound_player:
       volume: 1
       mode_end_action: stop
       fade_out: 2s
+    aza_mission_flutes_voice_pool:
+      action: play
+      volume: 2
+      events_when_stopped: launch_flutes_indication_voice_pool
+  launch_flutes_indication_voice_pool:
+    aza_mission_flutes_indication_voice_pool:
+      action: play
+      volume: 2  
+
   multiball_rlyeh_has_started:
     cthulhu_music_calme:
       action: stop
@@ -1213,11 +1222,11 @@ sound_player:
       mode_end_action: stop
       fade_out: 2s
 
-
   launchdeepspace:
     nyarla_sfx_new_step:
       action: play
       volume: 2
+      events_when_stopped: launch_deep_space_voice_pool
     cthulhu_music_calme:
       action: stop    
     cthulhu_music:
@@ -1226,19 +1235,51 @@ sound_player:
       volume: 1
       mode_end_action: stop
       fade_out: 2s
+  launch_deep_space_voice_pool:
+    aza_mission_search_space_voice_pool:
+      action: play
+      volume: 2
+      events_when_stopped: launch_deep_space_indication_voice_pool
+  launch_deep_space_indication_voice_pool:
+    aza_mission_search_space_indication_voice_pool:
+      action: play
+      volume: 2  
 
   launchcourt:
     nyarla_sfx_new_step:
       action: play
       volume: 2
+      events_when_stopped: launch_court_voice_pool
+  launch_court_voice_pool:
+    aza_mission_court_voice_pool:
+      action: play
+      volume: 2
+      events_when_stopped: launch_court_indication_voice_pool
+  launch_court_indication_voice_pool:
+    aza_mission_court_indication_voice_pool:
+      action: play
+      volume: 2
+
   launchazaend{current_player.insert_eldersign=='five'}:
     nyarla_sfx_new_step:
       action: play
       volume: 2
+      events_when_stopped: launch_aza_phase_4_indication_voice_pool
+  launch_aza_phase_4_indication_voice_pool:
+    aza_mission_phase_4_indication_voice_pool:
+      action: play
+      volume: 2
+
   launchazakill:
     nyarla_sfx_new_step:
       action: play
       volume: 2
+      events_when_stopped: launch_aza_end_indication_voice_pool
+  launch_aza_end_indication_voice_pool:
+    aza_end_indication_voice_pool:
+      action: play
+      volume: 2
+
 
   timer_aza_voice_time_complete:
     aza_voice_pool:
@@ -1437,3 +1478,79 @@ sound_pools:
       - aza_sfx_21
       - aza_sfx_22
       - aza_sfx_23
+
+  aza_mission_flutes_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - aza_voice_flutes_1
+      - aza_voice_flutes_2
+      - aza_voice_flutes_3
+      - aza_voice_flutes_4
+
+  aza_mission_flutes_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - aza_phase_1_voice_1
+      - aza_phase_1_voice_2
+      - aza_phase_1_voice_3
+
+  aza_mission_search_space_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - aza_voice_search_space_1
+      - aza_voice_search_space_2
+      - aza_voice_search_space_3
+      - aza_voice_search_space_4
+
+  aza_mission_search_space_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - aza_phase_2_voice_1
+      - aza_phase_2_voice_2
+      - aza_phase_2_voice_3
+
+
+  aza_mission_court_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - aza_voice_court_1
+      - aza_voice_court_2
+      - aza_voice_court_3
+      - aza_voice_court_4
+
+  aza_mission_court_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - aza_phase_3_voice_1
+      - aza_phase_3_voice_2
+      - aza_phase_3_voice_3
+
+  aza_mission_phase_4_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - aza_phase_4_voice_1
+      - aza_phase_4_voice_2
+      - aza_phase_4_voice_3
+
+  aza_end_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - aza_end_voice_1
+      - aza_end_voice_2
+      - aza_end_voice_3

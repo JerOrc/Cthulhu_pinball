@@ -1,7 +1,7 @@
 #config_version=6
 mode:
   start_events: twenties_start, mode_base_started
-  stop_events: twenties_stop
+  stop_events: twenties_stop, game_ended, ball_ended, game_ending, ball_ending
   priority: 150
   restart_on_next_ball: true
 
@@ -55,7 +55,9 @@ event_player:
   twenties_scoop_bas_shot_hit{current_player.insert_clue=='two'}: clue_step_three
   twenties_scoop_bas_shot_hit{current_player.insert_clue=='three'}: clue_step_four
 
-  mode_twenties_started{current_player.lock_rlyeh_aza_available=='yes'}: open_rlyeh_lock
+  mode_twenties_started{current_player.lock_rlyeh_twenties_available=='yes'}: open_rlyeh_lock
+  multiball_multiball_twenties_multiball_ended: relaunch_roaring_music
+  multiball_rlyeh_has_stopped: relaunch_roaring_music
 
 ###########################
 
@@ -170,24 +172,7 @@ widget_player:
 
 ###########################
 
-# random_event_player:
-#   launch_random_mission:
-#     events:
-#       - fordt_ride_start{current_player.multiball_twenties_running=='off' and current_player.multiball_rlyeh_running=='off' and current_player.buddy_mode_running=='off' and current_player.portal_multiball_running=='off' and current_player.cellar_multiball_running=='off'}
-
 random_event_player:
-  launch_random_mission:
-    events:
-      - stormy_night_start
-      - random_bonus_start
-      - buddy_twenties_start{current_player.buddy_mode_running=='off'}
-      - pursuit_twenties_start
-      - lurking_start
-      - chthonian_attack_start
-      - bywandine_start
-      - random_available_mission_start
-      - fordt_ride_start{current_player.multiball_twenties_running=='off' and current_player.multiball_rlyeh_running=='off' and current_player.buddy_mode_running=='off' and current_player.portal_multiball_running=='off' and current_player.cellar_multiball_running=='off'}
-
   launch_random_fordt_video:
     events:
       - launch_fordt_video_1
@@ -706,9 +691,9 @@ variable_player:
     bonus_ramps: 1
 
   twenties_gate_exit_library_shot_hit:
-    score: 500 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 500 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
   twenties_gate_secret_library_shot_hit:
-    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
 
   sanity_group_complete:
     score: 5000 * current_player.multiplier * current_player.spell_boost_multiplier
@@ -848,17 +833,6 @@ variable_player:
       action: set
       string: 'fordt'
 
-###########################
-
-counters:
-  random_mission_counter:
-    count_events: s_roll_skill_shot_1_active{current_player.random_event_available=='yes'}, s_roll_skill_shot_2_active{current_player.random_event_available=='yes'}, s_roll_skill_shot_3_active{current_player.random_event_available=='yes'}, s_sling_left_active{current_player.random_event_available=='yes'}, s_sling_right_active{current_player.random_event_available=='yes'}, s_sling_up_active{current_player.random_event_available=='yes'}, s_popbumper_one_active{current_player.random_event_available=='yes'}, s_popbumper_two_active{current_player.random_event_available=='yes'}, s_popbumper_three_active{current_player.random_event_available=='yes'}, s_target_square_white_1_active{current_player.random_event_available=='yes'}, s_target_square_white_2_active{current_player.random_event_available=='yes'}, s_target_square_white_3_active{current_player.random_event_available=='yes'}, s_target_square_white_4_active{current_player.random_event_available=='yes'}, s_target_square_white_5_active{current_player.random_event_available=='yes'}, s_target_library_1_active{current_player.random_event_available=='yes'}, s_target_library_2_active{current_player.random_event_available=='yes'}, s_target_library_3_active{current_player.random_event_available=='yes'}, s_target_library_4_active{current_player.random_event_available=='yes'}, s_target_library_5_active{current_player.random_event_available=='yes'}, s_target_library_6_active{current_player.random_event_available=='yes'}, s_target_green_1_active{current_player.random_event_available=='yes'}, s_target_green_2_active{current_player.random_event_available=='yes'}, s_target_green_3_active{current_player.random_event_available=='yes'}, s_drop_target_1_active{current_player.random_event_available=='yes'}, s_drop_target_2_active{current_player.random_event_available=='yes'}, s_drop_target_3_active{current_player.random_event_available=='yes'}, s_drop_target_4_active{current_player.random_event_available=='yes'}, s_roll_fordt_active{current_player.random_event_available=='yes'}, s_roll_asylum_active{current_player.random_event_available=='yes'}, s_gate_library_active{current_player.random_event_available=='yes'}, s_gate_secret_library_active{current_player.random_event_available=='yes'}, s_gate_main_ramp_active{current_player.random_event_available=='yes'}, s_gate_green_ramp_active{current_player.random_event_available=='yes'}, s_gate_cthulhu_ramp_active{current_player.random_event_available=='yes'}, s_roll_library_active{current_player.random_event_available=='yes'}, s_roll_space_active{current_player.random_event_available=='yes'}, s_roll_right_inlane_active{current_player.random_event_available=='yes'}, s_roll_left_inlane_active{current_player.random_event_available=='yes'}
-    starting_count: 0
-    count_complete_value: (current_player.random_value_mission)
-    events_when_complete: launch_random_mission
-    reset_on_complete: true
-    disable_on_complete: false
-    persist_state: false
 
 ###########################
 
@@ -1143,14 +1117,13 @@ sound_player:
   multiball_rlyeh_has_started:
     roaring_20:
       action: stop
-  multiball_rlyeh_has_stopped:
+  relaunch_roaring_music:
     roaring_20:
       action: play
       loops: -1
       volume: 1
       mode_end_action: stop
       fade_out: 1s
-
 
   twenties_green_ramp_shot_hit:
     wind_sound_pool:
@@ -1264,6 +1237,11 @@ sound_player:
       events_when_stopped: play_drop_target_voice
   play_drop_target_voice:
     drop_target_sound_pool:
+      action: play
+      volume: 2
+      events_when_stopped: launch_portal_ready_twenties_voice_pool
+  launch_portal_ready_twenties_voice_pool:
+    portal_ready_twenties_voice_sound_pool:
       action: play
       volume: 2
 
@@ -1434,6 +1412,14 @@ sound_pools:
       - dimensional_portal_7
       - dimensional_portal_8
       - dimensional_portal_9
+
+  portal_ready_twenties_voice_sound_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - dimensional_portal_ready_twenties_voice_1
+      - dimensional_portal_ready_twenties_voice_2
 
   wind_sound_pool:
     load: preload

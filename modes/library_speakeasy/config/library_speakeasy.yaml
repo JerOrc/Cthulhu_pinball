@@ -2,7 +2,7 @@
 
 mode:
   start_events: library_speakeasy_start
-  stop_events: library_speakeasy_stop, timer_exit_library_speakeasy_time_complete
+  stop_events: library_speakeasy_stop, timer_exit_library_speakeasy_time_complete, game_ended, ball_ended, game_ending, ball_ending
   priority: 700
   restart_on_next_ball: false
 
@@ -59,17 +59,28 @@ variable_player:
       action: set
  
   speakeasy_target_library_1_shot_hit:
-    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    bonus_targets: 1
   speakeasy_target_library_2_shot_hit:
-    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    bonus_targets: 1
   speakeasy_target_library_3_shot_hit:
-    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    bonus_targets: 1
   speakeasy_target_library_4_shot_hit:
-    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    bonus_targets: 1
   speakeasy_target_library_5_shot_hit:
-    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    bonus_targets: 1
   speakeasy_target_library_6_shot_hit:
-    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 1000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    bonus_targets: 1
+
+  library_speakeasy_target_group_complete:
+    score: 10000  * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    bonus_targets: 1
+    library_boost_multiplier: 1
 
 ###########################
 
@@ -78,6 +89,12 @@ show_player:
     library_side_flash_show:
       speed: 100
       loops: -1
+
+  library_speakeasy_target_group_complete:
+    library_target_group_complete_show:
+      speed: 5
+      loops: 10
+      priority: 1000
 
 ###########################
 
@@ -105,34 +122,35 @@ timers:
 shots:
   speakeasy_target_library_1_shot:
     switch: s_target_library_1
-    profile: speakeasy_target_flash
     show_tokens:
       led: insert_80
   speakeasy_target_library_2_shot:
     switch: s_target_library_2
-    profile: speakeasy_target_flash
     show_tokens:
       led: insert_79
   speakeasy_target_library_3_shot:
     switch: s_target_library_3
-    profile: speakeasy_target_flash
     show_tokens:
       led: insert_78
   speakeasy_target_library_4_shot:
     switch: s_target_library_4
-    profile: speakeasy_target_flash
     show_tokens:
       led: insert_77
   speakeasy_target_library_5_shot:
     switch: s_target_library_5
-    profile: speakeasy_target_flash
     show_tokens:
       led: insert_76
   speakeasy_target_library_6_shot:
     switch: s_target_library_6
-    profile: speakeasy_target_flash
     show_tokens:
       led: insert_75
+
+###########################
+
+shot_groups:
+  library_speakeasy_target_group:
+    shots: speakeasy_target_library_1_shot, speakeasy_target_library_2_shot, speakeasy_target_library_3_shot, speakeasy_target_library_4_shot, speakeasy_target_library_5_shot, speakeasy_target_library_6_shot
+    reset_events: library_speakeasy_target_group_complete
 
 ###########################
 
@@ -195,3 +213,8 @@ sound_player:
     book_sounds:
       action: play
       volume: 1
+
+  library_speakeasy_target_group_complete:
+    complete_library_sound:
+      action: play
+      volume: 0.5

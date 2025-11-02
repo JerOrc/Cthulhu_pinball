@@ -1,7 +1,7 @@
 #config_version=6
 mode:
   start_events: stormy_night_start
-  stop_events: stormy_night_stop, ball_ended
+  stop_events: stormy_night_stop, game_ended, ball_ended, game_ending, ball_ending
   priority: 1200
   restart_on_next_ball: false
 
@@ -956,6 +956,7 @@ sound_player:
       volume: 1
       mode_end_action: stop
       fade_out: 1s
+      priority: 2000
     thunder_start_sound:
       action: play
       volume: 3

@@ -1,7 +1,7 @@
 #config_version=6
 mode:
   start_events: king_win_start
-  stop_events: timer_quit_king_win_time_complete
+  stop_events: timer_quit_king_win_time_complete, game_ended, ball_ended, game_ending, ball_ending
   restart_on_next_ball: false
   priority: 300
 

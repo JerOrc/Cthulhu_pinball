@@ -1,8 +1,8 @@
 #config_version=6
 mode:
   start_events: nyarla_start
-  stop_events: nyarla_stop, ball_ended
-  priority: 600
+  stop_events: nyarla_stop, game_ended, ball_ended, game_ending, ball_ending
+  priority: 1600
   restart_on_next_ball: false
 
 event_player:
@@ -287,7 +287,7 @@ shot_profiles:
         show: nyarla_clue_insert_flash_show
         speed: 65
         loops: -1
-        priority: 600
+        priority: 1600
       - name: encounteroff
         show: off
 
@@ -316,12 +316,12 @@ shot_profiles:
         show: nyarla_nyarla_insert_flash_show
         speed: 65
         loops: -1
-        priority: 600
+        priority: 1600
       - name: witchhouseflashingfast
         show: nyarla_nyarla_insert_flash_show
         speed: 125
         loops: -1
-        priority: 600
+        priority: 1600
       - name: witchhouseoff
         show: off
 
@@ -333,7 +333,7 @@ shot_profiles:
         show: nyarla_blink_show
         speed: 10
         loops: -1
-        priority: 600
+        priority: 1600
       - name: formsroff
         show: off
   forms_profile_2:
@@ -344,7 +344,7 @@ shot_profiles:
         show: nyarla_library_insert_flash_show
         speed: 65
         loops: -1
-        priority: 600
+        priority: 1600
       - name: formsroff
         show: off
 
@@ -356,7 +356,7 @@ shot_profiles:
         show: nyarla_blink_show
         speed: 10
         loops: -1
-        priority: 600
+        priority: 1600
       - name: nyarlaendroff
         show: off
 
@@ -368,7 +368,7 @@ shot_profiles:
         show: nyarla_nyarla_insert_flash_show
         speed: 65
         loops: -1
-        priority: 600
+        priority: 1600
       - name: nyarlaendroff
         show: off
 
@@ -380,7 +380,7 @@ shot_profiles:
         show: nyarla_target_blink_show
         speed: 15
         loops: 1
-        priority: 600
+        priority: 1600
 
 ###########################
 
@@ -1257,8 +1257,8 @@ variable_player:
     score: 600 * current_player.multiplier * current_player.spell_boost_multiplier
     nyarla_champion: 600 * current_player.multiplier * current_player.spell_boost_multiplier
   nyarla_gate_secret_library_shot_hit:
-    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier
-    nyarla_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    nyarla_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
 
 ###########################
 
@@ -1307,6 +1307,15 @@ sound_player:
       volume: 1
       mode_end_action: stop
       fade_out: 1s
+    nyarla_mission_encounter_voice_pool:
+      action: play
+      volume: 2
+      events_when_stopped: launch_nyarla_phase_1_indication_voice_pool
+  launch_nyarla_phase_1_indication_voice_pool:
+    nyarla_phase_1_indication_voice_pool:
+      action: play
+      volume: 2
+
   multiball_rlyeh_has_started:
     cthulhu_music_calme:
       action: stop
@@ -1333,6 +1342,7 @@ sound_player:
     nyarla_sfx_new_step:
       action: play
       volume: 2
+      events_when_stopped: launch_witch_voice_pool
     cthulhu_music_calme:
       action: stop    
     cthulhu_music:
@@ -1341,17 +1351,53 @@ sound_player:
       volume: 1
       mode_end_action: stop
       fade_out: 1s
+  launch_witch_voice_pool:
+    nyarla_mission_witch_voice_pool:
+      action: play
+      volume: 2
+      events_when_stopped: launch_nyarla_phase_2_indication_voice_pool
+  launch_nyarla_phase_2_indication_voice_pool:
+    nyarla_phase_2_indication_voice_pool:
+      action: play
+      volume: 2
 
   launchforms:
     nyarla_sfx_new_step:
       action: play
       volume: 2
+      events_when_stopped: launch_forms_voice_pool
+  launch_forms_voice_pool:
+    nyarla_mission_forms_voice_pool:
+      action: play
+      volume: 2
+      events_when_stopped: launch_nyarla_phase_3_indication_voice_pool
+  launch_nyarla_phase_3_indication_voice_pool:
+    nyarla_phase_3_indication_voice_pool:
+      action: play
+      volume: 2
+
   launchnyarlaend{current_player.insert_eldersign=='five'}:
     nyarla_sfx_new_step:
       action: play
       volume: 2
+      events_when_stopped: launch_nyarla_phase_4_indication_voice_pool
+  launch_nyarla_phase_4_indication_voice_pool:
+    nyarla_phase_4_indication_voice_pool:
+      action: play
+      volume: 2
+
+  nyarladroptargetrowcomplete:
+    nyarla_phase_4_ramp_indication_voice_pool:
+      action: play
+      volume: 2
+
   launchnyarlakill:
     nyarla_sfx_new_step:
+      action: play
+      volume: 2
+      events_when_stopped: launch_nyarla_kill_indication_voice_pool
+  launch_nyarla_kill_indication_voice_pool:
+    nyarla_kill_indication_voice_pool:
       action: play
       volume: 2
 
@@ -1591,3 +1637,88 @@ sound_pools:
       - nyarla_hit_sfx_8
       - nyarla_hit_sfx_9
       - nyarla_hit_sfx_10
+
+  nyarla_mission_encounter_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - nyarla_voice_strange_encounter_1
+      - nyarla_voice_strange_encounter_2
+      - nyarla_voice_strange_encounter_3
+      - nyarla_voice_strange_encounter_4
+
+  nyarla_phase_1_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - nyarla_phase_1_voice_1
+      - nyarla_phase_1_voice_2
+      - nyarla_phase_1_voice_3
+
+  nyarla_mission_witch_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - nyarla_voice_witch_house_1
+      - nyarla_voice_witch_house_2
+      - nyarla_voice_witch_house_3
+      - nyarla_voice_witch_house_4
+
+  nyarla_phase_2_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - nyarla_phase_2_voice_1
+      - nyarla_phase_2_voice_2
+      - nyarla_phase_2_voice_3
+
+  nyarla_mission_forms_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - nyarla_voice_thousands_forms_1
+      - nyarla_voice_thousands_forms_2
+      - nyarla_voice_thousands_forms_3
+      - nyarla_voice_thousands_forms_4
+
+  nyarla_phase_3_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - nyarla_phase_3_voice_1
+      - nyarla_phase_3_voice_2
+      - nyarla_phase_3_voice_3
+
+  nyarla_phase_4_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - nyarla_phase_4_voice_1
+      - nyarla_phase_4_voice_2
+      - nyarla_phase_4_voice_3
+
+  nyarla_phase_4_ramp_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - nyarla_phase_4_ramp_voice_1
+      - nyarla_phase_4_ramp_voice_2
+      - nyarla_phase_4_ramp_voice_3
+
+
+  nyarla_kill_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - nyarla_end_voice_1
+      - nyarla_end_voice_2
+      - nyarla_end_voice_3

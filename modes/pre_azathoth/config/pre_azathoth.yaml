@@ -1,8 +1,8 @@
 #config_version=6
 mode:
   start_events: pre_azathoth_start
-  stop_events: pre_azathoth_stop, timer_launch_azathoth_time_complete
-  priority: 200
+  stop_events: pre_azathoth_stop, timer_launch_azathoth_time_complete, game_ended, ball_ended, game_ending, ball_ending
+  priority: 1500
   restart_on_next_ball: true
 
 ###########################

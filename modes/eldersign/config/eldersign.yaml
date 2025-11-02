@@ -2,13 +2,14 @@
 
 mode:
   start_events: mode_twenties_started, mode_speakeasy_started, mode_radio_started, mode_charleston_started
-  stop_events: stop_eldersign, mode_sanity_started, mode_cult_started, mode_graveyard_started, mode_city_started, mode_stormy_night_started
-  priority: 800
+  stop_events: stop_eldersign, mode_sanity_started, mode_cult_started, mode_graveyard_started, mode_city_started, mode_stormy_night_started, game_ended, ball_ended, game_ending, ball_ending
+  priority: 1800
 
 ###########################
 
 event_player:
   green_target_group_complete: shaker_shake, launch_random_eldersign_video
+  "{current_player.insert_eldersign=='five'}": block_eldersign
 
 ###########################
 
@@ -110,18 +111,21 @@ shots:
     switch: s_target_green_1
     profile: elder_profile
     reset_events: green_target_group_complete
+    disable_events: block_eldersign
     show_tokens:
       led: led_47
   eldersign_green_target_2_shot:
     switch: s_target_green_2
     profile: elder_profile
     reset_events: green_target_group_complete
+    disable_events: block_eldersign
     show_tokens:
       led: led_45
   eldersign_green_target_3_shot:
     switch: s_target_green_3
     profile: elder_profile
     reset_events: green_target_group_complete
+    disable_events: block_eldersign
     show_tokens:
       led: led_46
 

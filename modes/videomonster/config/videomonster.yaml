@@ -1,7 +1,7 @@
 #config_version=6
 mode:
   start_events: videomonster_start
-  stop_events: videomonster_stop, ball_ended
+  stop_events: videomonster_stop, game_ended, ball_ended, game_ending, ball_ending
   priority: 1000
   restart_on_next_ball: false
 
@@ -834,6 +834,7 @@ sound_player:
       volume: 1
       mode_end_action: stop
       fade_out: 1s
+      priority: 2000
 
   end_videomonster_mode:
     new_highscore_sound:

@@ -1,12 +1,14 @@
 #show_version=6
 - time: 0
   lights:
+    gi: purple-f200ms
     insert_66: purple-f200ms
     side_led_right: purple-f200ms
     side_led_left: purple-f200ms
     
 - time: "+1"
   lights:
+    gi: white-f200ms
     insert_66: white-f200ms
     side_led_right: white-f200ms
     side_led_left: white-f200ms

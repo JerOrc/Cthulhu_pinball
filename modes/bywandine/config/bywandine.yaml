@@ -1,14 +1,14 @@
 #config_version=6
 mode:
   start_events: bywandine_start
-  stop_events: bywandine_stop, ball_ended
+  stop_events: bywandine_stop, game_ended, ball_ended, game_ending, ball_ending 
   priority: 1600
   restart_on_next_ball: false
 
 ###########################
 
 event_player:
-  mode_bywandine_started: twenties_stop, hold_stop, launch_bywandine_timer
+  mode_bywandine_started: twenties_stop, hold_stop, launch_bywandine_timer, launch_bywandine_voice, launch_bywandine_music|1s
   timer_exit_bywandine_time_complete: show_bywandine_bonus
   timer_exit_bywandinebonus_time_complete: bywandine_stop, twenties_start
   drop_target_bywandine_group_complete: win_bywandine_bonus
@@ -709,10 +709,21 @@ variable_player:
       action: add
       int: 5000 * current_player.multiplier * current_player.spell_boost_multiplier
 
-
 ###########################
 
 sound_player:
+  launch_bywandine_music:
+    bywandine_music_1:
+      action: play
+      loops: -1
+      track: music
+      mode_end_action: stop
+      fade_out: 1s
+  launch_bywandine_voice:
+    bywandine_indication_voice_pool:
+      action: play
+      volume: 2
+
   show_bywandine_bonus:
     bywandine_bonus_sfx_1:
       action: play
@@ -937,6 +948,15 @@ sound_pools:
       - bywandine_sfx_3
       - bywandine_sfx_4
       - bywandine_sfx_5
+
+  bywandine_indication_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - bywandine_debut_voice_1
+      - bywandine_debut_voice_2
+      - bywandine_debut_voice_3
 
 ###########################
 

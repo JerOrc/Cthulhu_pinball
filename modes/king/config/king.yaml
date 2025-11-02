@@ -1,8 +1,8 @@
 #config_version=6
 mode:
   start_events: king_start
-  stop_events: king_stop, ball_ended
-  priority: 600
+  stop_events: king_stop, game_ended, ball_ended, game_ending, ball_ending
+  priority: 1600
   restart_on_next_ball: false
 
 ###########################
@@ -288,7 +288,7 @@ shot_profiles:
 
   curtain_main_ramp_profile:
     advance_on_hit: false
-    block: true
+    block: false
     states:
       - name: curtainflashing
         show: insert_king_king_flash_show
@@ -322,7 +322,7 @@ shot_profiles:
 
   horror_ramp_profile:
     advance_on_hit: false
-    block: true
+    block: false
     states:
       - name: horrorflashing
         show: graveyard_ghoul_blink_show
@@ -344,7 +344,7 @@ shot_profiles:
 
   king_end_main_ramp_profile:
     advance_on_hit: true
-    block: true
+    block: false
     states:
       - name: kingendflashing
         show: insert_king_king_flash_show
@@ -1372,8 +1372,8 @@ variable_player:
     score: 600 * current_player.multiplier * current_player.spell_boost_multiplier
     king_champion: 600 * current_player.multiplier * current_player.spell_boost_multiplier
   king_gate_secret_library_shot_hit:
-    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier
-    king_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier
+    score: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
+    king_champion: 15000 * current_player.multiplier * current_player.spell_boost_multiplier * current_player.library_boost_multiplier
 
   king_scoop_bas_tatterdemalion_shot_tatterdemalionflashing_hit:
     score: 5000 * current_player.multiplier * current_player.spell_boost_multiplier
@@ -1409,6 +1409,15 @@ sound_player:
       volume: 1
       mode_end_action: stop
       fade_out: 1s
+    king_mission_tatterdemalion_voice_pool:
+      action: play
+      volume: 2
+      events_when_stopped: launch_king_phase_1_indication_voice
+  launch_king_phase_1_indication_voice:
+    king_mission_phase_1_voice_pool:
+      action: play
+      volume: 2
+
   multiball_rlyeh_has_started:
     cthulhu_music_calme:
       action: stop
@@ -1427,6 +1436,7 @@ sound_player:
     nyarla_sfx_new_step:
       action: play
       volume: 2
+      events_when_stopped: launch_curtain_voice_pool
     cthulhu_music_calme:
       action: stop    
     cthulhu_music:
@@ -1435,17 +1445,43 @@ sound_player:
       volume: 1
       mode_end_action: stop
       fade_out: 1s
+  launch_curtain_voice_pool:
+    king_mission_curtain_voice_pool:
+      action: play
+      volume: 2
 
   launchchorrorstage:
     nyarla_sfx_new_step:
       action: play
       volume: 2
-  launchkingend:
+      events_when_stopped: launch_stage_voice_pool
+  launch_stage_voice_pool:
+    king_mission_stage_voice_pool:
+      action: play
+      volume: 2
+      events_when_stopped: launch_king_phase_3_indication_voice
+  launch_king_phase_3_indication_voice:
+    king_mission_phase_3_voice_pool:
+      action: play
+      volume: 2
+
+  launchkingend{current_player.insert_eldersign=='five'}:
     nyarla_sfx_new_step:
       action: play
       volume: 2
+      events_when_stopped: launch_king_phase_4_indication_voice
+  launch_king_phase_4_indication_voice:
+    king_mission_phase_4_voice_pool:
+      action: play
+      volume: 2
+
   launchkingkill:
     nyarla_sfx_new_step:
+      action: play
+      volume: 2
+      events_when_stopped: launch_kill_king_indication_voice_pool
+  launch_kill_king_indication_voice_pool:
+    king_mission_end_voice_pool:
       action: play
       volume: 2
 
@@ -1644,3 +1680,72 @@ sound_pools:
       - king_hit_sfx_7
       - king_hit_sfx_8
       - king_hit_sfx_9
+
+  king_mission_tatterdemalion_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - king_voice_tatterdemalion_1
+      - king_voice_tatterdemalion_2
+      - king_voice_tatterdemalion_3
+      - king_voice_tatterdemalion_4
+      - king_voice_tatterdemalion_5
+
+  king_mission_phase_1_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - king_phase_1_voice_1
+      - king_phase_1_voice_2
+      - king_phase_1_voice_3
+      - king_phase_1_voice_4
+      - king_phase_1_voice_5
+
+
+  king_mission_curtain_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - king_voice_curtain_1
+      - king_voice_curtain_2
+      - king_voice_curtain_3
+      - king_voice_curtain_4
+
+  king_mission_stage_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - king_voice_horror_stage_1
+      - king_voice_horror_stage_2
+      - king_voice_horror_stage_3
+      - king_voice_horror_stage_4
+
+  king_mission_phase_3_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - king_phase_3_voice_1
+      - king_phase_3_voice_2
+
+  king_mission_phase_4_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - king_phase_4_voice_1
+      - king_phase_4_voice_2
+      - king_phase_4_voice_3
+
+  king_mission_end_voice_pool:
+    load: on_demand
+    type: random
+    track: voice
+    sounds:
+      - king_end_voice_1
+      - king_end_voice_2
+      - king_end_voice_3

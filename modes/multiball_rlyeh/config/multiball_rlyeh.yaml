@@ -1,8 +1,8 @@
 #config_version=6
 mode:
-  start_events:  mode_base_started, multiball_rlyeh_start, mode_carousel_stopped, multiball_multiball_twenties_multiball_ended, mode_lurking_stopped{current_player.multiball_twenties_running=='off'}, mode_bywandine_stopped{current_player.multiball_twenties_running=='off'}, mode_pursuit_twenties_stopped{current_player.multiball_twenties_running=='off'}, mode_sanity_stopped{current_player.multiball_twenties_running=='off'}, mode_chthonian_attack_stopped{current_player.multiball_twenties_running=='off'}
-  stop_events: multiball_rlyeh_stop, mode_carousel_started, multiball_multiball_twenties_multiball_started, mode_lurking_started, mode_bywandine_started, mode_pursuit_twenties_started, mode_sanity_started, mode_chthonian_attack_started, mode_videofordt_started, mode_videomonster_started
-  priority: 1500
+  start_events:  mode_base_started, multiball_rlyeh_start, mode_carousel_stopped, multiball_multiball_twenties_multiball_ended
+  stop_events: multiball_rlyeh_stop, mode_carousel_started, multiball_multiball_twenties_multiball_started, game_ended, ball_ended, game_ending, ball_ending
+  priority: 2500
   restart_on_next_ball: true
 
 ###########################
@@ -10,7 +10,7 @@ mode:
 event_player:
   "{device.shots.multiball_rlyeh_target_square_4_shot.state_name=='litmultiball' and device.shots.multiball_rlyeh_target_square_5_shot.state_name=='litmultiball'}": display_rlyeh_lock_lit
   multiball_rlyeh_cthulhu_ramp_shot_litlock_hit: block_rlyeh_lock, shaker_shake
-  # mode_twenties_started{current_player.lock_rlyeh_twenties_available=='no'}: block_rlyeh_lock
+  mode_twenties_started{current_player.lock_rlyeh_twenties_available=='no'}: block_rlyeh_lock
   mode_aza_started{current_player.lock_rlyeh_aza_available=='no'}: block_rlyeh_lock
   mode_charleston_started{current_player.lock_rlyeh_charleston_available=='no'}: block_rlyeh_lock
   mode_city_started{current_player.lock_rlyeh_city_available=='no'}: block_rlyeh_lock
@@ -22,27 +22,44 @@ event_player:
   mode_radio_started{current_player.lock_rlyeh_radio_available=='no'}: block_rlyeh_lock
   mode_shub_started{current_player.lock_rlyeh_shub_available=='no'}: block_rlyeh_lock
   mode_speakeasy_started{current_player.lock_rlyeh_speakeasy_available=='no'}: block_rlyeh_lock
+  mode_pursuit_twenties_started: block_rlyeh_lock
+  mode_stormy_night_started: block_rlyeh_lock
+  mode_fordt_ride_started: block_rlyeh_lock
+  mode_bywandine_started: block_rlyeh_lock
+  mode_chthonian_attack_started: block_rlyeh_lock
+  mode_lurking_started: block_rlyeh_lock
+  mode_sanity_started: block_rlyeh_lock
+  mode_videofordt_started: block_rlyeh_lock
+  mode_videomonster_started: block_rlyeh_lock
+
+  mode_lurking_stopped{current_player.multiball_twenties_running=='off'}: open_rlyeh_lock
+  mode_bywandine_stopped{current_player.multiball_twenties_running=='off'}: open_rlyeh_lock
+  mode_pursuit_twenties_stopped{current_player.multiball_twenties_running=='off'}: open_rlyeh_lock
+  mode_sanity_stopped{current_player.multiball_twenties_running=='off'}: open_rlyeh_lock
+  mode_chthonian_attack_stopped{current_player.multiball_twenties_running=='off'}: open_rlyeh_lock
 
   s_action_active{current_player.rlyeh_multi_available=='yes' and current_player.random_event_available=='yes'}: launch_rlyeh_multiball #utilisation du blocage des pré grand anciens pour ne pas avoir de random event pendant ce moment de jeu
-  s_action_active{current_player.rlyeh_multi_level_2_available=='yes' and current_player.random_event_available=='yes'}: launch_rlyeh_multiball_level_2
-  s_action_active{current_player.rlyeh_multi_level_3_available=='yes' and current_player.random_event_available=='yes'}: launch_rlyeh_multiball_level_3
 
   multiball_multiball_rlyeh_multiball_started: multiball_rlyeh_has_started
-  multiball_multiball_rlyeh_multiball_level_2_started: multiball_rlyeh_has_started
-  multiball_multiball_rlyeh_multiball_level_3_started: multiball_rlyeh_has_started
+  multiball_rlyeh_has_started: launch_multiball_rlyeh_music|1s
 
   multiball_multiball_rlyeh_multiball_ended: multiball_rlyeh_has_stopped
-  multiball_multiball_rlyeh_multiball_level_2_ended: multiball_rlyeh_has_stopped
-  multiball_multiball_rlyeh_multiball_level_3_ended: multiball_rlyeh_has_stopped
 
 ###########################
 
 slide_player:
-  display_rlyeh_lock_lit: multiball_rlyeh_lock_ready_slide
-  rlyeh_multiball_ready: multiball_rlyeh_launch_ready_slide
-  rlyeh_multiball_level_2_ready: multiball_rlyeh_launch_ready_slide
-  rlyeh_multiball_level_3_ready: multiball_rlyeh_launch_ready_slide
-  multiball_rlyeh_cthulhu_ramp_shot_litlock_hit: multiball_rlyeh_ball_locked_slide
+  display_rlyeh_lock_lit:
+    multiball_rlyeh_lock_ready_slide:
+      action: play
+      priority: 2000
+  rlyeh_multiball_ready:
+    multiball_rlyeh_launch_ready_slide:
+      action: play
+      priority: 2000
+  multiball_rlyeh_cthulhu_ramp_shot_litlock_hit:
+    multiball_rlyeh_ball_locked_slide:
+      action: play
+      priority: 2000
 
 ###########################
 
@@ -50,24 +67,9 @@ multiballs:
   multiball_rlyeh_multiball:
     ball_count: 2
     ball_count_type: add
-    shoot_again: 20s
-    grace_period: 3s
-    start_events: launch_rlyeh_multiball
-
-  multiball_rlyeh_multiball_level_2:
-    ball_count: 2
-    ball_count_type: add
     shoot_again: 30s
     grace_period: 3s
-    start_events: launch_rlyeh_multiball_level_2
-
-  multiball_rlyeh_multiball_level_3:
-    ball_count: 2
-    ball_count_type: add
-    shoot_again: 20s
-    grace_period: 3s
-    start_events: launch_rlyeh_multiball_level_3
-
+    start_events: launch_rlyeh_multiball
 
 ###########################
 
@@ -519,6 +521,11 @@ show_player:
   multiball_rlyeh_cthulhu_ramp_shot_litlock_hit:
     rlyeh_multi_insert_flash_show:
       action: stop
+    rlyeh_multiball_ready_show:
+      speed: 35
+      loops: 0
+      priority: 1000
+
 
   multiball_rlyeh_target_square_4_shot_blinkrlyeh_hit:
     multiball_rlyeh_left_ready_show:
@@ -534,32 +541,13 @@ show_player:
   rlyeh_multiball_ready:
     rlyeh_multiball_ready_show:
       speed: 35
-      loops: 2
+      loops: 3
       priority: 1000
     rlyeh_multiball_led_ready_blink_show:
       speed: 10
       loops: -1
       priority: 2000
 
-  rlyeh_multiball_level_2_ready:
-    rlyeh_multiball_ready_show:
-      speed: 35
-      loops: 2
-      priority: 1000
-    rlyeh_multiball_led_ready_blink_show:
-      speed: 10
-      loops: -1
-      priority: 2000
-
-  rlyeh_multiball_level_3_ready:
-    rlyeh_multiball_ready_show:
-      speed: 35
-      loops: 2
-      priority: 1000
-    rlyeh_multiball_led_ready_blink_show:
-      speed: 10
-      loops: -1
-      priority: 2000
 
   multiball_rlyeh_has_started:
     multiball_ball_save_blink_show:
@@ -591,12 +579,6 @@ show_player:
   multiball_multiball_rlyeh_multiball_grace_period:
     multiball_ball_save_blink_show:
       action: stop
-  multiball_multiball_rlyeh_multiball_level_2_grace_period:
-    multiball_ball_save_blink_show:
-      action: stop
-  multiball_multiball_rlyeh_multiball_level_3_grace_period:
-    multiball_ball_save_blink_show:
-      action: stop
 
 ###########################
 
@@ -606,29 +588,10 @@ variable_player:
       action: set
       string: 'yes'
 
-  rlyeh_multiball_level_2_ready:
-    rlyeh_multi_level_2_available:
-      action: set
-      string: 'yes'
-
-  rlyeh_multiball_level_3_ready:
-    rlyeh_multi_level_3_available:
-      action: set
-      string: 'yes'
-
   multiball_multiball_rlyeh_multiball_started:
     rlyeh_multi_available:
       action: set
       string: 'no'
-  multiball_multiball_rlyeh_multiball_level_2_started:
-    rlyeh_multi_level_2_available:
-      action: set
-      string: 'no'
-  multiball_multiball_rlyeh_multiball_level_3_started:
-    rlyeh_multi_level_3_available:
-      action: set
-      string: 'no'
-
 
   multiball_rlyeh_sling_left_shot_hit:
     score: 500 * current_player.multiplier * current_player.spell_boost_multiplier
@@ -783,6 +746,17 @@ sound_player:
     multiball_rlyeh_launch_sound:
       action: play
       volume: 2
+  launch_multiball_rlyeh_music:
+    multiball_rlyeh_music_1:
+      action: play
+      track: music
+      volume: 2
+      loops: -1
+      fade_out: 1s
+
+  multiball_rlyeh_has_stopped:
+    multiball_rlyeh_music_1:
+      action: stop
 
   multiball_rlyeh_asylum_orbit_shot_hit:
     jackpot_voice_pool:
@@ -804,8 +778,6 @@ sound_player:
     super_jackpot_voice_pool:
       action: play
       volume: 1
-
-
 
 ###########################
 

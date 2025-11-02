@@ -1,8 +1,8 @@
 #config_version=6
 mode:
   start_events: pre_cthulhu_start
-  stop_events: pre_cthulhu_stop, timer_launch_cthulhu_time_complete
-  priority: 200
+  stop_events: pre_cthulhu_stop, timer_launch_cthulhu_time_complete, game_ended, ball_ended, game_ending, ball_ending
+  priority: 1500
   restart_on_next_ball: true
 
 ###########################
@@ -78,7 +78,7 @@ show_player:
 
 timers:
   launch_cthulhu_time:
-    start_value: 7
+    start_value: 8
     end_value: 0
     direction: down
     tick_interval: 1s

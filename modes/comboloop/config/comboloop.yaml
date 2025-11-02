@@ -2,7 +2,7 @@
 mode:
   start_events: ball_started, base_start
   priority: 1700
-  stop_events: base_stop
+  stop_events: base_stop, game_ended, ball_ended, game_ending, ball_ending
 
 ###########################
 

@@ -2,7 +2,14 @@
 mode:
   start_events: ball_started
   priority: 1000
+  stop_events: game_ended, ball_ended, game_ending, ball_ending
 
+###########################
+
+event_player:
+  playfield_x2: shaker_shake, launch_random_team_video
+  playfield_x3: shaker_shake, launch_random_team_video
+  playfield_x4: shaker_shake, launch_random_team_video
 
 ###########################
 
@@ -12,7 +19,6 @@ shot_groups:
     rotate_left_events: s_left_flipper_active
     rotate_right_events: s_right_flipper_active
     reset_events: team_lane_complete
-
 
 ###########################
 
@@ -40,13 +46,6 @@ show_player:
       speed: 5
       loops: -1
       priority: 100
-
-###########################
-
-event_player:
-  playfield_x2: shaker_shake, launch_random_team_video
-  playfield_x3: shaker_shake, launch_random_team_video
-  playfield_x4: shaker_shake, launch_random_team_video
 
 ###########################
 
@@ -165,14 +164,20 @@ variable_player:
 shots:
   base_team_1_shot:
     switch: s_roll_skill_shot_1
+    disable_events: playfield_x4
+    enable_events: mode_team_lane_started
     show_tokens:
       light: insert_0
   base_team_2_shot:
     switch: s_roll_skill_shot_2
+    disable_events: playfield_x4
+    enable_events: mode_team_lane_started
     show_tokens:
       light: insert_1
   base_team_3_shot:
     switch: s_roll_skill_shot_3
+    disable_events: playfield_x4
+    enable_events: mode_team_lane_started
     show_tokens:
       light: insert_2
 
